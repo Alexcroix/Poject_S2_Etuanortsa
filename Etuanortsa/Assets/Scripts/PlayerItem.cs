@@ -14,7 +14,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
     public Image playerAvatar;
-    public Sprite[] avatar;
+    public Sprite[] avatars;
 
     Player player;
 
@@ -35,7 +35,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         if ((int)playerProperties["playerAvatar"] == 0)
         {
-            playerProperties["playerAvatar"] = avatar.Length - 1;
+            playerProperties["playerAvatar"] = avatars.Length - 1;
         }
         else
         {
@@ -46,7 +46,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void OnClickRightArrow()
     {
-        if ((int)playerProperties["playerAvatar"] == avatar.Length - 1)
+        if ((int)playerProperties["playerAvatar"] == avatars.Length - 1)
         {
             playerProperties["playerAvatar"] = 0;
         }
@@ -69,8 +69,8 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         if (player.CustomProperties.ContainsKey("playerAvatar"))
         {
-            playerAvatar.sprite = avatar[(int)player.CustomProperties["playerAvatar"]];
-            playerProperties["playerAvatar"] = avatar[(int)player.CustomProperties["playerAvatar"]];
+            playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];
+            playerProperties["playerAvatar"] = avatars[(int)player.CustomProperties["playerAvatar"]];
         }
         else
         {
