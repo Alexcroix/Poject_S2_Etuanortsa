@@ -70,7 +70,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         if (player.CustomProperties.ContainsKey("playerAvatar"))
         {
             playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];
-            playerProperties["playerAvatar"] = avatars[(int)player.CustomProperties["playerAvatar"]];
+            playerProperties["playerAvatar"] = (int)player.CustomProperties["playerAvatar"];
         }
         else
         {
