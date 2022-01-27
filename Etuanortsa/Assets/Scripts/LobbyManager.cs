@@ -68,8 +68,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             newRoom.SetRoomName(room.Name);
             roomItemslist.Add(newRoom);
         }
-
-
     }
 
     public void JoinRoom(string roomName)
