@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9149781517947237321}
   - component: {fileID: 8342356155366489440}
   m_Layer: 5
-  m_Name: PlayerSprite
+  m_Name: PlayerAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,16 +84,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3148408700745215531}
-  - component: {fileID: 2209685223317794401}
-  - component: {fileID: 8210282460592454598}
-  - component: {fileID: 3194288539700575501}
+  - component: {fileID: 796932013848634791}
+  - component: {fileID: 3211130417303951277}
+  - component: {fileID: 1985915132540179713}
   m_Layer: 5
   m_Name: ButtonRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3148408700745215531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ RectTransform:
   m_AnchoredPosition: {x: 48.7, y: -48.6}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2209685223317794401
+--- !u!222 &796932013848634791
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3687707574459469828}
   m_CullTransparentMesh: 1
---- !u!114 &8210282460592454598
+--- !u!114 &3211130417303951277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3194288539700575501
+--- !u!114 &1985915132540179713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0.2, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -191,10 +191,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 8210282460592454598}
+  m_TargetGraphic: {fileID: 3211130417303951277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8769552052239172569}
+        m_TargetAssemblyTypeName: PlayerItem, Assembly-CSharp
+        m_MethodName: OnClickRightArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3939924741299926013
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,16 +216,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1265939239272835975}
-  - component: {fileID: 3819116448433753322}
-  - component: {fileID: 9050779803544994208}
-  - component: {fileID: 1040838956133812540}
+  - component: {fileID: 8214381262217068025}
+  - component: {fileID: 5538313170414807932}
+  - component: {fileID: 3658236636236100610}
   m_Layer: 5
   m_Name: ButtonLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1265939239272835975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -233,7 +245,7 @@ RectTransform:
   m_AnchoredPosition: {x: -40.9, y: -48.6}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3819116448433753322
+--- !u!222 &8214381262217068025
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,7 +253,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3939924741299926013}
   m_CullTransparentMesh: 1
---- !u!114 &9050779803544994208
+--- !u!114 &5538313170414807932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,7 +283,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1040838956133812540
+--- !u!114 &3658236636236100610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,8 +305,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0.2, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -311,10 +323,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 9050779803544994208}
+  m_TargetGraphic: {fileID: 5538313170414807932}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8769552052239172569}
+        m_TargetAssemblyTypeName: PlayerItem, Assembly-CSharp
+        m_MethodName: OnclickLeftArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4697386726369857085
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,3 +513,9 @@ MonoBehaviour:
   playerName: {fileID: 5800359779456955071}
   leftArrowButton: {fileID: 3939924741299926013}
   rightArrowButton: {fileID: 3687707574459469828}
+  playerAvatar: {fileID: 8342356155366489440}
+  avatar:
+  - {fileID: -8734380007391605809, guid: c623689cdca1b7c4bb89228002348a7e, type: 3}
+  - {fileID: -5745513076737537032, guid: c623689cdca1b7c4bb89228002348a7e, type: 3}
+  - {fileID: -4367430802729618967, guid: c623689cdca1b7c4bb89228002348a7e, type: 3}
+  - {fileID: 4840819256784793835, guid: c623689cdca1b7c4bb89228002348a7e, type: 3}

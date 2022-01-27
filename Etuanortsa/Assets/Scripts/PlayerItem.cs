@@ -22,6 +22,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         playerName.text = _player.NickName;
         player = _player;
+        UpdatePlayerItem(player);
     }
 
     public void ApplyLocalChanges()
