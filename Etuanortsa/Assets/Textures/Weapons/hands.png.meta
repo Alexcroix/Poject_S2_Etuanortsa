@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 6af914d2eeca2a84ba53967f6fcf09b9
+guid: 169598059c22f94459c242b9cde18416
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2308801046078035759
-    second: Mitrallette_0
+      213: 6751002202477829170
+    second: hands_0
   - first:
-      213: -4403072818677640127
-    second: Mitrallette_1
-  - first:
-      213: 4175487391124009798
-    second: Mitrallette_2
+      213: 1736978023890593550
+    second: hands_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,64 +109,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mitrallette_0
+      name: hands_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 56
+        y: 106
         width: 200
-        height: 100
-      alignment: 9
-      pivot: {x: 0.3, y: 0.3}
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d8e77f5ead75ffd0800000000000000
-      internalID: -2308801046078035759
+      spriteID: 23c129c1cb060bd50800000000000000
+      internalID: 6751002202477829170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mitrallette_1
+      name: hands_1
       rect:
         serializedVersion: 2
         x: 200
-        y: 57
+        y: 106
         width: 200
-        height: 100
-      alignment: 9
-      pivot: {x: 0.3, y: 0.3}
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1449a82999425e2c0800000000000000
-      internalID: -4403072818677640127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mitrallette_2
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 56
-        width: 200
-        height: 100
-      alignment: 9
-      pivot: {x: 0.3, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 643b118d8af42f930800000000000000
-      internalID: 4175487391124009798
+      spriteID: e07a8a05f4cfa1810800000000000000
+      internalID: 1736978023890593550
       vertices: []
       indices: 
       edges: []

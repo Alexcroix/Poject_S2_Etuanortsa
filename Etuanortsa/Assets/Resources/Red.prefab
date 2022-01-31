@@ -287,10 +287,13 @@ MonoBehaviour:
   mouse_x: 0
   mouse_y: 0
   moving: 0
-  camera: {fileID: 4036968036468126628}
-  MovementSpeed: 10
-  rb: {fileID: 1874220508553803707}
+  cam: {fileID: 0}
+  player: {fileID: 0}
   animator: {fileID: 5032013567268615306}
+  weapon: {fileID: 0}
+  Left_weapon: {fileID: 0}
+  Right_weapon: {fileID: 0}
+  MovementSpeed: 10
 --- !u!95 &5032013567268615306
 Animator:
   serializedVersion: 3
