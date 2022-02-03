@@ -124,10 +124,13 @@ MonoBehaviour:
   mouse_x: 0
   mouse_y: 0
   moving: 0
-  camera: {fileID: 2506252687097314807}
-  MovementSpeed: 10
-  rb: {fileID: 4829338879081195042}
+  cam: {fileID: 0}
+  player: {fileID: 0}
   animator: {fileID: 2761450423799023515}
+  weapon: {fileID: 0}
+  Left_weapon: {fileID: 0}
+  Right_weapon: {fileID: 0}
+  MovementSpeed: 10
 --- !u!95 &2761450423799023515
 Animator:
   serializedVersion: 3
@@ -185,7 +188,7 @@ BoxCollider2D:
   m_Offset: {x: 0.051659018, y: -0.85667855}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.25}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
