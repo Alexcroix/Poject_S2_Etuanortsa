@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -29,6 +30,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinLobby();
         roomPannel.SetActive(false);
+    }
+
+    public void OnClickBack()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("menu");
     }
 
     public void OnClickCreate()
