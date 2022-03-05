@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -13,9 +10,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 mousePos;
     Vector3 tempPos;
 
-    public GameObject UI;
-    public Sprite[] HealthBar;
-    public Image imageHealth;
     public float mouse_x;
     public float mouse_y;
     public bool moving;
@@ -26,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     //Player
     public Rigidbody2D player;
     public Animator animator;
-    public int PlayerHealth = 100;
 
     //Weapon
     public Rigidbody2D weapon;
@@ -41,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
         if (View.IsMine)
         {
             PlayerCamera.SetActive(true);
-            UI.SetActive(true);
         }
     }
 
@@ -64,10 +56,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (View.IsMine)
         {
-
-            //HealthBar
-            imageHealth.sprite = HealthBar[this.PlayerHealth/10];
-
             //VectorMovement
             player.MovePosition(player.position + movement * MovementSpeed * Time.deltaTime);
             weapon.MovePosition(player.position + movement * MovementSpeed * Time.deltaTime);

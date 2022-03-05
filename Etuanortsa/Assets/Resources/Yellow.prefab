@@ -123,9 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8542674ad0b45043aeac5dab1d5c420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
-  HealthBar: []
-  imageHealth: {fileID: 0}
   mouse_x: 0
   mouse_y: 0
   moving: 0
@@ -133,7 +130,6 @@ MonoBehaviour:
   PlayerCamera: {fileID: 7981976029509711805}
   player: {fileID: 6634875838444532895}
   animator: {fileID: 4126483581045593382}
-  PlayerHealth: 100
   weapon: {fileID: 6639688857829190517, guid: fa734d8453fedbf4584f5b8c8e4be7a7, type: 3}
   Left_weapon: {fileID: 6751002202477829170, guid: 169598059c22f94459c242b9cde18416, type: 3}
   Right_weapon: {fileID: 1736978023890593550, guid: 169598059c22f94459c242b9cde18416, type: 3}
