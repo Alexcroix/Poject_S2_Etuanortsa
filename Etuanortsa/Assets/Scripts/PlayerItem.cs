@@ -8,7 +8,6 @@ using Photon.Realtime;
 public class PlayerItem : MonoBehaviourPunCallbacks
 {
     public Text playerName;
-
     public GameObject leftArrowButton;
     public GameObject rightArrowButton;
 
@@ -18,11 +17,14 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     Player player;
 
+    
     public void SetPlayerInfo(Player _player)
     {
         playerName.text = _player.NickName;
         player = _player;
         UpdatePlayerItem(player);
+        playerProperties["playerAvatar"] = 0;
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
     public void ApplyLocalChanges()

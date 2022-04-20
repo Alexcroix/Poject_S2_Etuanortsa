@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefabs:
-  - {fileID: 3543810671774863206, guid: 925da693f84c75c44bc552d925561ab1, type: 3}
-  - {fileID: 3998988845495771025, guid: 18141f8be0962004ba074447e8534195, type: 3}
-  - {fileID: 1619685819500507850, guid: 8d7d6f3ee87c43d408d63bc432b743fb, type: 3}
-  - {fileID: 3525466804989658719, guid: c2e1ee7762a1d1e4898f082e6d0ce74e, type: 3}
+  - {fileID: 3543810671774863206, guid: 92694b7643b70b444b0835a8df4b5652, type: 3}
+  - {fileID: 3998988845495771025, guid: a46045e914a704749ba66817e9c86c8e, type: 3}
+  - {fileID: 1619685819500507850, guid: c406924a23228da48949ec4208390a0b, type: 3}
+  - {fileID: 3525466804989658719, guid: 42bf0660d1ad6884db767ad99a5d44c7, type: 3}
   spawnPoint: {fileID: 18278198}
 --- !u!4 &18278198
 Transform:
@@ -10683,6 +10683,10 @@ PrefabInstance:
       propertyPath: PlayerList.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2287684815232533868, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
+      propertyPath: PlayerList.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3157386523929832715, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -10694,6 +10698,10 @@ PrefabInstance:
     - target: {fileID: 7464733623225679664, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: canMove
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464733623225679664, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
+      propertyPath: maxSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7464733623225679664, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: endReachedDistance
@@ -129834,7 +129842,7 @@ MonoBehaviour:
   col: {fileID: 1944171394}
   Xpos: 0
   Ypos: 0
-  nbenemy: 3
+  nbenemy: 100
   pointspawn: {x: 0, y: 0}
 --- !u!4 &1944171396
 Transform:

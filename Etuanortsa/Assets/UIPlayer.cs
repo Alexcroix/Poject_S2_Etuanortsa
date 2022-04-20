@@ -15,11 +15,11 @@ public class UIPlayer : MonoBehaviour
     PhotonView View;
     public Camera cam;
     public GameObject PlayerCamera;
+    public Sprite[] HealthBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         View = GetComponent<PhotonView>();
         if (View.IsMine)
         {
