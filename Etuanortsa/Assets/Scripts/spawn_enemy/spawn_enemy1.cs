@@ -26,14 +26,14 @@ public class spawn_enemy1 : MonoBehaviour
     {
         for (int i = 0; i < nbenemy; i++)
         {
-            Xpos = Random.Range(1, 50);
-            Ypos = Random.Range(1, 50);
+            Xpos = Random.Range(0, 50);
+            Ypos = Random.Range(0, 50);
             pointspawn.x = Xpos;
             pointspawn.y = Ypos;
             while (!col.OverlapPoint(pointspawn))
             {
-                Xpos = Random.Range(1, 50);
-                Ypos = Random.Range(1, 50);
+                Xpos = Random.Range(0, 50);
+                Ypos = Random.Range(0, 50);
                 pointspawn.x = Xpos;
                 pointspawn.y = Ypos;
             }
