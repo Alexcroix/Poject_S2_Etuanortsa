@@ -33,8 +33,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0012283}
-  m_SizeDelta: {x: 800, y: 420.63}
+  m_AnchoredPosition: {x: 0.24995, y: -0.24943}
+  m_SizeDelta: {x: 800.5, y: 431.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1267857490376974054
 GameObject:
@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 6576366304240254816}
   - component: {fileID: 7903831265715031142}
   - component: {fileID: 5451580028884965913}
-  - component: {fileID: 4133693719476708546}
   m_Layer: 0
   m_Name: Red
   m_TagString: Untagged
@@ -319,6 +318,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8542674ad0b45043aeac5dab1d5c420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joueurs: []
+  alive: 0
+  pauseMenu: {fileID: 1267857490376974054}
+  playerUI: {fileID: 273172728885935447}
+  bar: {fileID: 3764830231195978477}
+  HealthBar:
+  - {fileID: -8227546954408941770, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -3178617384780871938, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 5032351099696674128, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 5856585005746452560, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -6503669339106013020, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -7959300830350487195, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 4778905902034280743, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -5794802862350705069, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 742694783190739037, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -8435055190330730327, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -6903054167352455934, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   mouse_x: 0
   mouse_y: 0
   moving: 0
@@ -459,36 +475,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5033798, y: 0.47703338}
   m_EdgeRadius: 0
---- !u!114 &4133693719476708546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619685819500507850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549efd797943e2f44a63db030b42e06a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joueurs: []
-  pauseMenu: {fileID: 1267857490376974054}
-  playerUI: {fileID: 273172728885935447}
-  bar: {fileID: 3764830231195978477}
-  cam: {fileID: 4838547551669739231}
-  PlayerCamera: {fileID: 1273142052898410544}
-  HealthBar:
-  - {fileID: -8227546954408941770, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -3178617384780871938, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 5032351099696674128, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 5856585005746452560, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -6503669339106013020, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -7959300830350487195, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 4778905902034280743, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -5794802862350705069, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 742694783190739037, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -8435055190330730327, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -6903054167352455934, guid: a59302921db59aa45914b503a1db7c11, type: 3}
 --- !u!1 &4206330130331302028
 GameObject:
   m_ObjectHideFlags: 0
