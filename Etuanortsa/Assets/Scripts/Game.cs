@@ -8,11 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviourPunCallbacks
 {
-    public List<Joueur> joueurs = new List<Joueur>();
+    public static List<Joueur> joueurs = new List<Joueur>();
 
-    private void Start()
+    private void Update()
     {
-        joueurs.Add(GameObject.FindObjectOfType<Joueur>());
         foreach(Joueur j in joueurs)
         {
             print(j);

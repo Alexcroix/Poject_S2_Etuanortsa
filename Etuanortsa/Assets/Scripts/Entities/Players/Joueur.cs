@@ -48,6 +48,7 @@ public class Joueur : Game
         View = GetComponent<PhotonView>();
         if (View.IsMine)
         {
+            Game.joueurs.Add(this);
             pauseMenu.SetActive(false);
             playerUI.SetActive(true);
             PlayerCamera.SetActive(true);

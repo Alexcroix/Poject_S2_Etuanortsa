@@ -318,7 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8542674ad0b45043aeac5dab1d5c420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joueurs: []
   alive: 0
   pauseMenu: {fileID: 1267857490376974054}
   playerUI: {fileID: 273172728885935447}
