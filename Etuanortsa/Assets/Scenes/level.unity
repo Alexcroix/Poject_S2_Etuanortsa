@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74280fab4d57d534a937be71b082389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joueurs: []
 --- !u!1 &19466493
 GameObject:
   m_ObjectHideFlags: 0
@@ -13495,7 +13494,7 @@ PrefabInstance:
     - target: {fileID: 2287684815232533868, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: PlayerList.Array.data[0]
       value: 
-      objectReference: {fileID: 1426586214}
+      objectReference: {fileID: 0}
     - target: {fileID: 3157386523929832715, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -13507,6 +13506,10 @@ PrefabInstance:
     - target: {fileID: 7464733623225679664, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: canMove
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464733623225679664, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
+      propertyPath: maxSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7464733623225679664, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: endReachedDistance
@@ -135698,7 +135701,7 @@ MonoBehaviour:
   col: {fileID: 1944171394}
   Xpos: 0
   Ypos: 0
-  nbenemy: 3
+  nbenemy: 0
   pointspawn: {x: 0, y: 0}
 --- !u!4 &1944171396
 Transform:

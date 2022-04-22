@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Threading;
+
 
 namespace Pathfinding {
 	/// <summary>
@@ -22,6 +24,7 @@ namespace Pathfinding {
 		public float hitboxmob;
 		public float hitboxplayer; // on doit le supprimer plus tard (il faut recuperer le hit box du joueur il est le meme pour tt les personnes)
 		public Rigidbody2D rigidbody;
+		bool end = false;
 		
 		IAstarAI ai;
 
@@ -59,10 +62,28 @@ namespace Pathfinding {
 
 			}
 			ai.destination = min.transform.position;
+			
+			if (ai.reachedEndOfPath)
+            {
+				StartCoroutine(Attacks());
+
+
+
+			}
 
 			
 		}
 
+		IEnumerator Attacks()
+		{
+
+			ai.canMove = false;
+			yield return new WaitForSeconds(0.5f);
+			ai.canMove = true;
+
+
+
+		}
 
 		public float cvt(GameObject ia, GameObject mob)
 		{
