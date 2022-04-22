@@ -5,6 +5,7 @@ using UnityEngine.Profiling;
 #endif
 
 namespace Pathfinding {
+
 	/// <summary>
 	/// Handles path calls for a single unit.
 	/// \ingroup relevant

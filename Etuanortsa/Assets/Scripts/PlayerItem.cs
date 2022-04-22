@@ -5,19 +5,18 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerItem : MonoBehaviourPunCallbacks
+public class PlayerItem : Game
 {
     public Text playerName;
     public GameObject leftArrowButton;
     public GameObject rightArrowButton;
-
     ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
+
     public Image playerAvatar;
     public Sprite[] avatars;
 
     Player player;
 
-    
     public void SetPlayerInfo(Player _player)
     {
         playerName.text = _player.NickName;

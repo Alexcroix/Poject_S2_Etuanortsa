@@ -6,15 +6,9 @@ using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class Game : MonoBehaviourPunCallbacks
 {
-    public static List<Joueur> joueurs = new List<Joueur>();
-
-    private void Update()
-    {
-        foreach(Joueur j in joueurs)
-        {
-            print(j);
-        }
-    }
+public static List<Joueur> joueurs = new List<Joueur>();
+    
 }

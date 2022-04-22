@@ -17,11 +17,7 @@ public class spawn_enemy1 : MonoBehaviour
         StartCoroutine(EnemyDrop());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     IEnumerator EnemyDrop()
     {
         for (int i = 0; i < nbenemy; i++)

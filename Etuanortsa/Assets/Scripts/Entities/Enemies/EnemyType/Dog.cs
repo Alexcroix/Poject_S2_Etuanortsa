@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dog : Enemy
 {
+
     public Dog()
     {
         this.type = EnemyType.DOG;

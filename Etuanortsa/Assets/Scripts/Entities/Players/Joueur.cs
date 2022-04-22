@@ -5,14 +5,10 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-
 public class Joueur : Game
 {
     //Stats
-    public static int hp = 100;
-    public bool alive = false;
-    protected int Current_hp = 100;
+    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
 
     //UI
     public GameObject pauseMenu;
@@ -45,23 +41,40 @@ public class Joueur : Game
 
     void Start()
     {
+        Game.joueurs.Add(this);
         View = GetComponent<PhotonView>();
         if (View.IsMine)
         {
-            Game.joueurs.Add(this);
+            foreach (var i in Game.joueurs)
+            {
+                print(i);
+            }
+
+            playerProperties["health"] = 100;
+            playerProperties["alive"] = true;
+            playerProperties["name"] = PhotonNetwork.LocalPlayer.NickName;
+            
             pauseMenu.SetActive(false);
             playerUI.SetActive(true);
             PlayerCamera.SetActive(true);
+
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         }
     }
 
     void Update()
     {
+
         if (View.IsMine)
         {
-            //UI
-            bar.sprite = HealthBar[(Current_hp / 10)];
+            if ((bool)playerProperties["alive"] == false)
+            {
+                playerIsDead();
+            }
 
+            //UI
+            bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (pauseMenu.activeSelf)
@@ -131,5 +144,17 @@ public class Joueur : Game
         }
         
     }
+
+    public void GetDamage(int damage)
+    {
+        playerProperties["health"] = (int)playerProperties["health"] - damage;
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
+
+    public void playerIsDead()
+    {
+        
+    }
+
 }
 
