@@ -5,16 +5,23 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 public class Joueur : Game
 {
     //Stats
     ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
+    public ExitGames.Client.Photon.Hashtable PlayerProperties => playerProperties;
 
     //UI
     public GameObject pauseMenu;
     public GameObject playerUI;
     public Image bar;
     public Sprite[] HealthBar;
+
+    //Sprite
+    private SpriteRenderer character;
+    private Color col;
+    private bool invisible;
 
     //movement
     Vector2 movement;
@@ -36,6 +43,7 @@ public class Joueur : Game
     public Rigidbody2D weapon;
     public Sprite Left_weapon;
     public Sprite Right_weapon;
+    public List<Weapon> weapons = new List<Weapon>();
 
     public float MovementSpeed = 10f;
 
@@ -43,6 +51,9 @@ public class Joueur : Game
     {
         Game.joueurs.Add(this);
         View = GetComponent<PhotonView>();
+        character = GetComponent<SpriteRenderer>();
+        invisible = false;
+        col = character.color;
         if (View.IsMine)
         {
             foreach (var i in Game.joueurs)
@@ -67,9 +78,15 @@ public class Joueur : Game
 
         if (View.IsMine)
         {
+            // invisible quand joueur mort
             if ((bool)playerProperties["alive"] == false)
             {
                 playerIsDead();
+            }
+            // non invisible quand joueur en vie 
+            if ((bool)playerProperties["alive"] == true)
+            {
+                playerIsRevive();
             }
 
             //UI
@@ -153,7 +170,18 @@ public class Joueur : Game
 
     public void playerIsDead()
     {
-        
+        invisible = true;
+        col.a = .2f;
+        character.color = col;
+        weapons.Clear();
+    }
+
+    public void playerIsRevive()
+    {
+        invisible = false;
+        col.a = 1;
+        character.color = col;
+        //ajouter a la liste l'arme basic
     }
 
 }

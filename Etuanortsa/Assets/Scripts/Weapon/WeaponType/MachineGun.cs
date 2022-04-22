@@ -6,8 +6,11 @@ public class MachineGun : Weapon
 {
     public MachineGun()
     {
-        this.type = WeaponType.MACHINE_GUN;
+        this.type = WeaponType.GUN;
         this.damage = 0;
         this.cadence = 0;
+        this.tmpReoald = 0;
+        this.munition = 20;
+        this.maxMunition = 20;
     }
 }
