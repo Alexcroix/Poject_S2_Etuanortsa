@@ -1,49 +1,83 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = System.Random;
+
+public enum EnemyType
+{
+    STANDARD,
+    DOG,
+    BLOB,
+    BOSS
+}
 
 public class Enemies : MonoBehaviour
 {
-    public readonly int BossStage = 30;
-
-    public void WaveGeneration(int wave)
+    public static List<EnemyType> AllEnemies;
+    public static readonly int BossStage = 30;
+    
+    public static void WaveGenerator(int wave)
     {
-        Game.AllEnemies = new List<Enemy>();
+        AllEnemies = new List<EnemyType>();
 
+        int x = StandardSpawn(wave);
+
+        for (int i = 0; i < x; i++)
+        {
+            AllEnemies.Add(EnemyType.DOG);
+        }
+
+        Shuffle(AllEnemies);
+        
+        /*
         if (wave == BossStage)
         {
-            Game.AllEnemies.Add(new Enemy("Boss"));
+            AllEnemies.Add(EnemyType.DOG);
         }
         else
         {
-            int x = StantardSpawn(wave);
+            int x = StandardSpawn(wave);
 
             for (int i = 0; i < x; i++)
             {
-                Game.AllEnemies.Add(new Enemy("Stantard"));
+                AllEnemies.Add(EnemyType.DOG);
             }
 
             x = DogSpawn(wave);
 
             for (int i = 0; i < x; i++)
             {
-                Game.AllEnemies.Add(new Enemy("Dog"));
+                AllEnemies.Add(EnemyType.DOG);
             }
 
             x = BlobSpawn(wave);
 
             for (int i = 0; i < x; i++)
             {
-                Game.AllEnemies.Add(new Enemy("Blob"));
+                AllEnemies.Add(EnemyType.DOG);
             }
         }
+
+        Shuffle(AllEnemies);
+        */
     }
 
-    /**public void SpawnEnemy(List<Enemy> AllEnemies)
-     * {
-     * 
-     * }
-    **/
+    public static void Shuffle(List<EnemyType> enemies)
+    {
+        AllEnemies = new List<EnemyType>();
+
+        var rnd = new Random();
+        var randomized = enemies.OrderBy(item => rnd.Next());
+
+        foreach (EnemyType enemy in randomized)
+        {
+            AllEnemies.Add(enemy);
+        }
+        Console.WriteLine("ta mere");
+        Console.WriteLine("" + AllEnemies.Count);
+    }
 
     public static bool SpawnAbility(int range, int wave)
     {
@@ -75,7 +109,7 @@ public class Enemies : MonoBehaviour
         return (int)(start * coefficient + Spawn(start + range, wave, range, coefficient, minSpawn));
     }
 
-    public static int StantardSpawn(int wave)
+    public static int StandardSpawn(int wave)
     {
         return Spawn(1, wave, 1.2f, 40);
     }

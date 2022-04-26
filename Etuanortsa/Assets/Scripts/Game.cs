@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviourPunCallbacks
 {
-    public static List<Enemy> AllEnemies = new List<Enemy>();
+    public static List<EnemyType> AllEnemies = new List<EnemyType>();
     public static List<Transform> PosPlayer = new List<Transform>();
     public static int WaveCounter = 0;
     public static bool IsWaveFinish = true;//Passer a false quand tout marche
@@ -22,7 +22,6 @@ public class Game : MonoBehaviourPunCallbacks
    
     private void FixedUpdate()
     {
-        Debug.Log(Game.PosPlayer.Count);
         if (TimeToWait) 
         {
             timer += Time.deltaTime;
@@ -36,7 +35,7 @@ public class Game : MonoBehaviourPunCallbacks
         {
             if (IsAWave && WaveCounter < 31)
             {
-                Enemies.StantardSpawn(WaveCounter);
+                Enemies.StandardSpawn(WaveCounter);
                 IsAWave = false;
             }
             else
@@ -55,7 +54,8 @@ public class Game : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.LoadLevel("WinScene");
         }
-        bool Dead = true;
+        bool Dead = false;
+        // a true
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             if ((bool)player.CustomProperties["alive"] == true)
