@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
-public class Dog
+public class Dog :MonoBehaviour
 {
     public EnemyType CurrentEnemyType;
-    public GameObject gameObject;
+
     public string EnemyTag;
     public int MaxHealth;
     public int currentHealth;
     public int EnemyDamage;
     public int EnemySpeed;
     public int EnemyGains;
+    
 
     public void UpdateHealth(int newHealthValue)
     {
@@ -23,4 +25,22 @@ public class Dog
         int updatedHealth = this.currentHealth - damage;
         UpdateHealth(updatedHealth > 0 ? updatedHealth : 0);
     }
+    void Update()
+    {
+        
+        Seeker.listPlayer = Game.PosPlayer;
+        
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.TryGetComponent<Joueur>(out Joueur j) )
+        {
+           j.GetDamage(EnemyDamage);
+            Debug.Log("lkyjthfgd");
+        }
+        
+    }
+
 }

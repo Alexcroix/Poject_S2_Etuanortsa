@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class spawn_enemy1 : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+public class spawn_enemy1 : MonoBehaviourPunCallbacks
 {
     public List<GameObject> gameObjects;
     public GameObject gameObject;
@@ -21,6 +24,7 @@ public class spawn_enemy1 : MonoBehaviour
 
     IEnumerator EnemyDrop()
     {
+        int i = 0;
         foreach (EnemyType enemy in Enemies.AllEnemies)
         {
             Xpos = Random.Range(-55, 24);
@@ -55,6 +59,11 @@ public class spawn_enemy1 : MonoBehaviour
 
             Instantiate(gameObject, pointspawn, Quaternion.identity);
             yield return new WaitForSeconds(1f);
+            if (i == 1)
+            {
+                break;
+            }
+            i++;
         }
     }
 }

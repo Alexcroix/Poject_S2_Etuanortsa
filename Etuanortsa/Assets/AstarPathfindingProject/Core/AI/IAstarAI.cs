@@ -16,6 +16,8 @@ namespace Pathfinding {
 		/// Note: The <see cref="Pathfinding.AILerp"/> script doesn't really have any use of knowing the radius or the height of the character, so this property will always return 0 in that script.
 		/// </summary>
 		float radius { get; set; }
+		
+		Transform [] listPlayer { get; set; }
 
 		/// <summary>
 		/// Height of the agent in world units.

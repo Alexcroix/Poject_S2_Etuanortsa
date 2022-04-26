@@ -28,6 +28,14 @@ namespace Pathfinding {
 		/// </summary>
 		public bool drawGizmos = true;
 
+		public static List<Transform> listPlayer = new List<Transform>(); // je l ai ajouter
+
+		public static bool attacks; // je l ai ajouter
+
+		public static GameObject player_target; // je l ai ajouter
+
+
+		
 		/// <summary>
 		/// Enables drawing of the non-postprocessed path using Gizmos.
 		/// The path will show up in orange.

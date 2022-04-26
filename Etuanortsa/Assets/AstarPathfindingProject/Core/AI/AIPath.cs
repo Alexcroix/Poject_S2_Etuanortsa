@@ -235,10 +235,12 @@ namespace Pathfinding {
 		/// <summary>\copydoc Pathfinding::IAstarAI::canMove</summary>
 		bool IAstarAI.canMove { get { return canMove; } set { canMove = value; } }
 
-		#endregion
+        public Transform[] listPlayer { get => new Transform[4]; set => throw new System.NotImplementedException(); }
 
-		/// <summary>\copydoc Pathfinding::IAstarAI::GetRemainingPath</summary>
-		public void GetRemainingPath (List<Vector3> buffer, out bool stale) {
+        #endregion
+
+        /// <summary>\copydoc Pathfinding::IAstarAI::GetRemainingPath</summary>
+        public void GetRemainingPath (List<Vector3> buffer, out bool stale) {
 			buffer.Clear();
 			buffer.Add(position);
 			if (!interpolator.valid) {

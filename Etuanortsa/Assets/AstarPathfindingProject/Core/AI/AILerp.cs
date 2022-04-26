@@ -221,6 +221,8 @@ namespace Pathfinding {
 		/// <summary>\copydoc Pathfinding::IAstarAI::radius</summary>
 		float IAstarAI.radius { get { return 0; } set {} }
 
+		
+
 		/// <summary>\copydoc Pathfinding::IAstarAI::height</summary>
 		float IAstarAI.height { get { return 0; } set {} }
 
@@ -431,11 +433,13 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>
-		/// Requests a path to the target.
-		/// Deprecated: Use <see cref="SearchPath"/> instead.
-		/// </summary>
-		[System.Obsolete("Use SearchPath instead")]
+        public Transform[] listPlayer { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        /// <summary>
+        /// Requests a path to the target.
+        /// Deprecated: Use <see cref="SearchPath"/> instead.
+        /// </summary>
+        [System.Obsolete("Use SearchPath instead")]
 		public virtual void ForceSearchPath () {
 			SearchPath();
 		}
