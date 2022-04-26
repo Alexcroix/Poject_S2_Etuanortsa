@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerItem : Game
+public class PlayerItem : MonoBehaviourPunCallbacks
 {
     public Text playerName;
     public GameObject leftArrowButton;

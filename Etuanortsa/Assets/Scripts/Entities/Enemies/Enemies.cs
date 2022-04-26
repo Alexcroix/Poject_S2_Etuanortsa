@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    public List<Enemy> AllEnemies;
     public readonly int BossStage = 30;
 
     public void WaveGeneration(int wave)
     {
-        AllEnemies = new List<Enemy>();
+        Game.AllEnemies = new List<Enemy>();
 
         if (wave == BossStage)
         {
-            AllEnemies.Add(new Enemy("Boss"));
+            Game.AllEnemies.Add(new Enemy("Boss"));
         }
         else
         {
@@ -21,21 +20,21 @@ public class Enemies : MonoBehaviour
 
             for (int i = 0; i < x; i++)
             {
-                AllEnemies.Add(new Enemy("Stantard"));
+                Game.AllEnemies.Add(new Enemy("Stantard"));
             }
 
             x = DogSpawn(wave);
 
             for (int i = 0; i < x; i++)
             {
-                AllEnemies.Add(new Enemy("Dog"));
+                Game.AllEnemies.Add(new Enemy("Dog"));
             }
 
             x = BlobSpawn(wave);
 
             for (int i = 0; i < x; i++)
             {
-                AllEnemies.Add(new Enemy("Blob"));
+                Game.AllEnemies.Add(new Enemy("Blob"));
             }
         }
     }

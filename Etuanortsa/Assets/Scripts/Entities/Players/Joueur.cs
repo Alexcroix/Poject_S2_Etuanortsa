@@ -5,23 +5,15 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine;
-public class Joueur : Game
-{
-    //Stats
-    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
-    public ExitGames.Client.Photon.Hashtable PlayerProperties => playerProperties;
 
+public class Joueur : MonoBehaviourPunCallbacks
+{
     //UI
     public GameObject pauseMenu;
     public GameObject playerUI;
     public Image bar;
     public Sprite[] HealthBar;
-
-    //Sprite
-    private SpriteRenderer character;
-    private Color col;
-    private bool invisible;
+    public Text WaveCounterText;
 
     //movement
     Vector2 movement;
@@ -34,6 +26,7 @@ public class Joueur : Game
     public Camera cam;
     public GameObject PlayerCamera;
     PhotonView View;
+    Transform pos;
 
     //Player
     public Rigidbody2D player;
@@ -49,49 +42,32 @@ public class Joueur : Game
 
     void Start()
     {
-        Game.joueurs.Add(this);
         View = GetComponent<PhotonView>();
-        character = GetComponent<SpriteRenderer>();
-        invisible = false;
-        col = character.color;
+        pos = GetComponent<Transform>();
+        Game.PosPlayer.Add(pos);
         if (View.IsMine)
         {
-            foreach (var i in Game.joueurs)
-            {
-                print(i);
-            }
-
-            playerProperties["health"] = 100;
-            playerProperties["alive"] = true;
-            playerProperties["name"] = PhotonNetwork.LocalPlayer.NickName;
-            
-            pauseMenu.SetActive(false);
-            playerUI.SetActive(true);
             PlayerCamera.SetActive(true);
 
-            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+            PhotonNetwork.LocalPlayer.CustomProperties["health"] = 100;
+            PhotonNetwork.LocalPlayer.CustomProperties["alive"] = true;
+            PhotonNetwork.LocalPlayer.CustomProperties["name"] = PhotonNetwork.LocalPlayer.NickName;
+            PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
+
+            pauseMenu.SetActive(false);
+            playerUI.SetActive(true);
+
         }
     }
 
-    void Update()
+    private void Update()
     {
-
         if (View.IsMine)
         {
-            // invisible quand joueur mort
-            if ((bool)playerProperties["alive"] == false)
-            {
-                playerIsDead();
-            }
-            // non invisible quand joueur en vie 
-            if ((bool)playerProperties["alive"] == true)
-            {
-                playerIsRevive();
-            }
-
+            
             //UI
-            bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
-            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+            bar.sprite = HealthBar[(int)PhotonNetwork.LocalPlayer.CustomProperties["health"] / 10];
+            PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (pauseMenu.activeSelf)
@@ -164,25 +140,35 @@ public class Joueur : Game
 
     public void GetDamage(int damage)
     {
-        playerProperties["health"] = (int)playerProperties["health"] - damage;
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+        PhotonNetwork.LocalPlayer.CustomProperties["health"] = (int)PhotonNetwork.LocalPlayer.CustomProperties["health"] - damage;
+        if ((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] <= 0)
+        {
+            PhotonNetwork.LocalPlayer.CustomProperties["alive"] = false;
+        }
+        PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
     }
 
-    public void playerIsDead()
+    /*public void playerIsDead()
     {
         invisible = true;
         col.a = .2f;
         character.color = col;
         weapons.Clear();
-    }
+    }*/
 
-    public void playerIsRevive()
+    public void showWaveUpdate()
     {
-        invisible = false;
-        col.a = 1;
-        character.color = col;
-        //ajouter a la liste l'arme basic
+        if (View.IsMine)
+        {
+            if (Game.IsAWave)
+            {
+                WaveCounterText.text = "Wave : " + Game.WaveCounter;
+            }
+            else
+            {
+                WaveCounterText.text = "Time to prepare";
+            }
+        }
     }
-
 }
 

@@ -9,22 +9,63 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviourPunCallbacks
 {
-    public static List<Joueur> joueurs = new List<Joueur>();
-    
-    public bool endGame(List<Joueur> joueur, int round)
+    public static List<Enemy> AllEnemies = new List<Enemy>();
+    public static List<Transform> PosPlayer = new List<Transform>();
+    public static int WaveCounter = 0;
+    public static bool IsWaveFinish = true;//Passer a false quand tout marche
+    public static bool IsAWave = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
+    public static bool IsWaiting = false;
+    private float timer = 0.0f;
+    public float waitingTime = 60.0f;
+    public bool TimeToWait = false;
+    public bool GameIsFinish = false;
+   
+    private void FixedUpdate()
     {
-        bool rep = false;
-        if (round == 31)
+        Debug.Log(Game.PosPlayer.Count);
+        if (TimeToWait) 
         {
-            rep = true;
-        }
-        for (int i = 0; i < joueur.Count; i++)
-        {
-            if ((bool)joueur[i].PlayerProperties["alive"] == true)
+            timer += Time.deltaTime;
+            if (timer > waitingTime)
             {
-                rep = true;
+                timer = 0f;
+                TimeToWait = false;
             }
         }
-        return rep;
+        else
+        {
+            if (IsAWave && WaveCounter < 31)
+            {
+                Enemies.StantardSpawn(WaveCounter);
+                IsAWave = false;
+            }
+            else
+            {
+                WaveCounter++;
+                CheckEndGame(WaveCounter);
+                IsAWave = true;
+                TimeToWait = true;
+            }
+        }
+    }
+
+    public void CheckEndGame(int WaveCounter)
+    {
+        if (WaveCounter == 31)
+        {
+            PhotonNetwork.LoadLevel("WinScene");
+        }
+        bool Dead = true;
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            if ((bool)player.CustomProperties["alive"] == true)
+            {
+                Dead = false;
+            }
+        }
+        if (Dead)
+        {
+            PhotonNetwork.LoadLevel("LooseScene");
+        }
     }
 }

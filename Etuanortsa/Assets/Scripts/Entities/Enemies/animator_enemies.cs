@@ -39,7 +39,6 @@ public class animator_enemies : MonoBehaviour
         if (aiPath.reachedEndOfPath == true)
         {
             move =false;
-            print("ta mezez");
         }
         
         if (!aiPath.reachedEndOfPath)
