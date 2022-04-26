@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Joueur : MonoBehaviourPunCallbacks
 {
+    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
     //UI
     public GameObject pauseMenu;
     public GameObject playerUI;
@@ -47,13 +48,15 @@ public class Joueur : MonoBehaviourPunCallbacks
         Game.PosPlayer.Add(pos);
         if (View.IsMine)
         {
+           
             PlayerCamera.SetActive(true);
 
-            PhotonNetwork.LocalPlayer.CustomProperties["health"] = 100;
-            PhotonNetwork.LocalPlayer.CustomProperties["alive"] = true;
-            PhotonNetwork.LocalPlayer.CustomProperties["name"] = PhotonNetwork.LocalPlayer.NickName;
-            PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
+            playerProperties["health"] = 100;
+            playerProperties["alive"] = true;
+            playerProperties["name"] = PhotonNetwork.LocalPlayer.NickName;
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
 
+            bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
             pauseMenu.SetActive(false);
             playerUI.SetActive(true);
 
@@ -64,10 +67,15 @@ public class Joueur : MonoBehaviourPunCallbacks
     {
         if (View.IsMine)
         {
+            if (Game.IsWaiting)
+            {
+                WaveCounterText.text = "Wave : " + Game.WaveCounter;
+            }
+            else
+            {
+                WaveCounterText.text = "Time to prepare";
+            }
             
-            //UI
-            bar.sprite = HealthBar[(int)PhotonNetwork.LocalPlayer.CustomProperties["health"] / 10];
-            PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (pauseMenu.activeSelf)
@@ -140,12 +148,13 @@ public class Joueur : MonoBehaviourPunCallbacks
 
     public void GetDamage(int damage)
     {
-        PhotonNetwork.LocalPlayer.CustomProperties["health"] = (int)PhotonNetwork.LocalPlayer.CustomProperties["health"] - damage;
+        playerProperties["health"] = (int)playerProperties["health"] - damage;
+        bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
         if ((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] <= 0)
         {
             PhotonNetwork.LocalPlayer.CustomProperties["alive"] = false;
         }
-        PhotonNetwork.SetPlayerCustomProperties(PhotonNetwork.LocalPlayer.CustomProperties);
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
     /*public void playerIsDead()
@@ -156,19 +165,5 @@ public class Joueur : MonoBehaviourPunCallbacks
         weapons.Clear();
     }*/
 
-    public void showWaveUpdate()
-    {
-        if (View.IsMine)
-        {
-            if (Game.IsAWave)
-            {
-                WaveCounterText.text = "Wave : " + Game.WaveCounter;
-            }
-            else
-            {
-                WaveCounterText.text = "Time to prepare";
-            }
-        }
-    }
 }
 

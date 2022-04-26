@@ -503,9 +503,9 @@ GameObject:
   - component: {fileID: 9163610794343894447}
   - component: {fileID: 4126483581045593382}
   - component: {fileID: -6651093179738914404}
-  - component: {fileID: 2646965967799885089}
   - component: {fileID: 1464534798963513420}
   - component: {fileID: 6048847202376606902}
+  - component: {fileID: 7917333639399916174}
   m_Layer: 0
   m_Name: Yellow
   m_TagString: Untagged
@@ -614,8 +614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2378049131454461405}
-  playerUI: {fileID: 0}
-  bar: {fileID: 0}
+  playerUI: {fileID: 5299078999842148762}
+  bar: {fileID: 8084869376757907432}
   HealthBar:
   - {fileID: -8227546954408941770, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   - {fileID: -3178617384780871938, guid: a59302921db59aa45914b503a1db7c11, type: 3}
@@ -628,7 +628,7 @@ MonoBehaviour:
   - {fileID: 742694783190739037, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   - {fileID: -8435055190330730327, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   - {fileID: -6903054167352455934, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  WaveCounterText: {fileID: 0}
+  WaveCounterText: {fileID: 8251905946099287507}
   mouse_x: 0
   mouse_y: 0
   moving: 0
@@ -679,44 +679,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2646965967799885089}
   - {fileID: 1464534798963513420}
+  - {fileID: 7917333639399916174}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2646965967799885089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3525466804989658719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!114 &1464534798963513420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +737,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5099193, y: 0.46652162}
   m_EdgeRadius: 0
+--- !u!114 &7917333639399916174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525466804989658719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4443096059624646887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,8 +987,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.25065, y: -0.000070095}
-  m_SizeDelta: {x: 826.5, y: 484.85}
+  m_AnchoredPosition: {x: -0.00011209, y: -0.25102}
+  m_SizeDelta: {x: 827.02, y: 485.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7981976029509711805
 GameObject:
@@ -1159,10 +1142,10 @@ RectTransform:
   m_Father: {fileID: 4130269632928037949}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 333.52, y: 204.84}
-  m_SizeDelta: {x: 106.44, y: 25.83}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 330, y: 229.75}
+  m_SizeDelta: {x: -690, y: 26.488}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4209006448457778813
 CanvasRenderer:
@@ -1199,7 +1182,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

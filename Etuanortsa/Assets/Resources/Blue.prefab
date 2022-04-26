@@ -247,9 +247,9 @@ GameObject:
   - component: {fileID: 1213346240341732453}
   - component: {fileID: 5064625801223036192}
   - component: {fileID: 5274811343214470207}
-  - component: {fileID: 196969461100555828}
   - component: {fileID: 6020106921346069097}
   - component: {fileID: 931658025524930168}
+  - component: {fileID: 767620318018971177}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -358,8 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 806283324340306233}
-  playerUI: {fileID: 0}
-  bar: {fileID: 0}
+  playerUI: {fileID: 4731607989474459933}
+  bar: {fileID: 761989414073280860}
   HealthBar:
   - {fileID: -8227546954408941770, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   - {fileID: -3178617384780871938, guid: a59302921db59aa45914b503a1db7c11, type: 3}
@@ -372,7 +372,7 @@ MonoBehaviour:
   - {fileID: 742694783190739037, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   - {fileID: -8435055190330730327, guid: a59302921db59aa45914b503a1db7c11, type: 3}
   - {fileID: -6903054167352455934, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  WaveCounterText: {fileID: 0}
+  WaveCounterText: {fileID: 2575805787798758286}
   mouse_x: 0
   mouse_y: 0
   moving: 0
@@ -423,44 +423,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 196969461100555828}
   - {fileID: 6020106921346069097}
+  - {fileID: 767620318018971177}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &196969461100555828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3543810671774863206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!114 &6020106921346069097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +481,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.409462, y: 0.46634904}
   m_EdgeRadius: 0
+--- !u!114 &767620318018971177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543810671774863206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3567350857413973046
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,10 +771,10 @@ RectTransform:
   m_Father: {fileID: 7570891638423924847}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 333.52, y: 204.84}
-  m_SizeDelta: {x: 106.44, y: 25.83}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 330, y: 229.45}
+  m_SizeDelta: {x: -690, y: 26.485}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6940088467960066798
 CanvasRenderer:
@@ -828,7 +811,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
