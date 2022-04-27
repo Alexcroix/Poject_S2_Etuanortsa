@@ -8,12 +8,12 @@ using UnityEngine.SceneManagement;
 public class spawn_enemy1 : MonoBehaviourPunCallbacks
 {
     public List<GameObject> gameObjects;
-    public GameObject gameObject;
+    public GameObject Mob;
     public CompositeCollider2D col;
     public float Xpos = 0;
     public float Ypos = 0;
     public int nbenemy = Game.AllEnemies.Count;
-    public Vector2 pointspawn;
+    public Vector3 pointspawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,20 +44,20 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
             {
                 default:
                     case EnemyType.STANDARD:
-                        gameObject = gameObjects[0];
+                        Mob = gameObjects[0];
                         break;
                     case EnemyType.DOG:
-                        gameObject = gameObjects[1];
+                        Mob = gameObjects[1];
                         break;
                     case EnemyType.BLOB:
-                        gameObject = gameObjects[2];
+                        Mob = gameObjects[2];
                         break;
                     case EnemyType.BOSS:
-                        gameObject = gameObjects[3];
+                        Mob = gameObjects[3];
                         break;
             }
 
-            Instantiate(gameObject, pointspawn, Quaternion.identity);
+            PhotonNetwork.Instantiate(Mob.name, pointspawn, Quaternion.identity);
             yield return new WaitForSeconds(1f);
             if (i == 1)
             {

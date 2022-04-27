@@ -37,7 +37,7 @@ public class Dog :MonoBehaviour
 
         if (collision.gameObject.TryGetComponent<Joueur>(out Joueur j) )
         {
-           j.GetDamage(EnemyDamage);
+            j.GetDamage(EnemyDamage);
             Debug.Log("lkyjthfgd");
         }
         

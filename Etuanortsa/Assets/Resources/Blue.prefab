@@ -244,12 +244,12 @@ GameObject:
   - component: {fileID: 5016199505535341573}
   - component: {fileID: 3124039108726934548}
   - component: {fileID: 314559057670416989}
-  - component: {fileID: 1213346240341732453}
   - component: {fileID: 5064625801223036192}
   - component: {fileID: 5274811343214470207}
   - component: {fileID: 6020106921346069097}
   - component: {fileID: 931658025524930168}
   - component: {fileID: 767620318018971177}
+  - component: {fileID: 5740211292580416090}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -345,46 +345,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1213346240341732453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3543810671774863206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8542674ad0b45043aeac5dab1d5c420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 806283324340306233}
-  playerUI: {fileID: 4731607989474459933}
-  bar: {fileID: 761989414073280860}
-  HealthBar:
-  - {fileID: -8227546954408941770, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -3178617384780871938, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 5032351099696674128, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 5856585005746452560, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -6503669339106013020, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -7959300830350487195, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 4778905902034280743, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -5794802862350705069, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: 742694783190739037, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -8435055190330730327, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  - {fileID: -6903054167352455934, guid: a59302921db59aa45914b503a1db7c11, type: 3}
-  WaveCounterText: {fileID: 2575805787798758286}
-  mouse_x: 0
-  mouse_y: 0
-  moving: 0
-  cam: {fileID: 1711456978980666449}
-  PlayerCamera: {fileID: 1711456978980666450}
-  player: {fileID: 314559057670416989}
-  animator: {fileID: 5064625801223036192}
-  weapon: {fileID: 6639688857829190517, guid: fa734d8453fedbf4584f5b8c8e4be7a7, type: 3}
-  Left_weapon: {fileID: 6751002202477829170, guid: 169598059c22f94459c242b9cde18416, type: 3}
-  Right_weapon: {fileID: 1736978023890593550, guid: 169598059c22f94459c242b9cde18416, type: 3}
-  weapons: []
-  MovementSpeed: 10
 --- !u!95 &5064625801223036192
 Animator:
   serializedVersion: 3
@@ -497,6 +457,46 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &5740211292580416090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543810671774863206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e5771a5d171c74892e5598895292fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 806283324340306233}
+  playerUI: {fileID: 4731607989474459933}
+  bar: {fileID: 761989414073280860}
+  HealthBar:
+  - {fileID: -8227546954408941770, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -3178617384780871938, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 5032351099696674128, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 5856585005746452560, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -6503669339106013020, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -7959300830350487195, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 4778905902034280743, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -5794802862350705069, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: 742694783190739037, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -8435055190330730327, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  - {fileID: -6903054167352455934, guid: a59302921db59aa45914b503a1db7c11, type: 3}
+  WaveCounterText: {fileID: 2575805787798758286}
+  mouse_x: 0
+  mouse_y: 0
+  moving: 0
+  cam: {fileID: 1711456978980666449}
+  PlayerCamera: {fileID: 1711456978980666450}
+  player: {fileID: 314559057670416989}
+  animator: {fileID: 5064625801223036192}
+  weapon: {fileID: 6639688857829190517, guid: 0265d28b07fe0da4fa7da1353ad4dd4b, type: 3}
+  Left_weapon: {fileID: 0}
+  Right_weapon: {fileID: 0}
+  weapons: []
+  MovementSpeed: 10
 --- !u!1 &3567350857413973046
 GameObject:
   m_ObjectHideFlags: 0

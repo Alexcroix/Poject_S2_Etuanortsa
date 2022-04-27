@@ -1029,6 +1029,10 @@ PrefabInstance:
       propertyPath: PlayerList.Array.data[1]
       value: 
       objectReference: {fileID: 1592702480}
+    - target: {fileID: 4101830543683809055, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5877007305750548001, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
       propertyPath: m_Name
       value: enemy
@@ -135684,12 +135688,12 @@ MonoBehaviour:
   - {fileID: 5877007305750548001, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
   - {fileID: 5877007305750548001, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
   - {fileID: 5877007305750548001, guid: 970fc387e9dc87e45add328b9f821dee, type: 3}
-  gameObject: {fileID: 0}
+  Mob: {fileID: 0}
   col: {fileID: 1944171397}
   Xpos: 0
   Ypos: 0
   nbenemy: 0
-  pointspawn: {x: 0, y: 0}
+  pointspawn: {x: 0, y: 0, z: -1}
 --- !u!4 &1944171396
 Transform:
   m_ObjectHideFlags: 0

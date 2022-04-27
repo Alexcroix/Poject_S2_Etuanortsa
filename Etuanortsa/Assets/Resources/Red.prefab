@@ -316,7 +316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619685819500507850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8542674ad0b45043aeac5dab1d5c420, type: 3}
+  m_Script: {fileID: 11500000, guid: f2e5771a5d171c74892e5598895292fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1267857490376974054}
@@ -342,9 +342,9 @@ MonoBehaviour:
   PlayerCamera: {fileID: 1273142052898410544}
   player: {fileID: 6998974018993543872}
   animator: {fileID: 4536960988320651761}
-  weapon: {fileID: 6639688857829190517, guid: fa734d8453fedbf4584f5b8c8e4be7a7, type: 3}
-  Left_weapon: {fileID: 6751002202477829170, guid: 169598059c22f94459c242b9cde18416, type: 3}
-  Right_weapon: {fileID: 1736978023890593550, guid: 169598059c22f94459c242b9cde18416, type: 3}
+  weapon: {fileID: 6639688857829190517, guid: 0265d28b07fe0da4fa7da1353ad4dd4b, type: 3}
+  Left_weapon: {fileID: 0}
+  Right_weapon: {fileID: 0}
   weapons: []
   MovementSpeed: 10
 --- !u!95 &4536960988320651761
