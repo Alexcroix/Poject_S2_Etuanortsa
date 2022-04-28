@@ -112,8 +112,7 @@ public class Joueur : MonoBehaviourPunCallbacks
             Vector2 loorDir = mousePos;
             loorDir.x = loorDir.x - 0.5f;
             loorDir.y = loorDir.y - 0.5f;
-            float angle = Mathf.Atan2(loorDir.y, loorDir.x) * Mathf.Rad2Deg - 180f;
-            weapon.rotation = angle;
+            
 
             //SetValueAnimator
             animator.SetFloat("mouse_x", mouse_x);
