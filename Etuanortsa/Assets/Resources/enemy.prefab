@@ -108,7 +108,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.44
-  endReachedDistance: 2.25
+  endReachedDistance: 1.08
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -142,9 +142,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.17479706}
+  m_Offset: {x: -0.0062351227, y: -0.28942728}
   serializedVersion: 2
-  m_Radius: 0.67479706
+  m_Radius: 0.8256469
 --- !u!50 &3157386523929832715
 Rigidbody2D:
   serializedVersion: 4
@@ -178,13 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ad431b51ea2f34fb5642819dd8d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentEnemyType: 0
-  EnemyTag: 
-  MaxHealth: 0
-  currentHealth: 1
-  EnemyDamage: 10
-  EnemySpeed: 0
-  EnemyGains: 0
 --- !u!114 &4101830543683809055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +345,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000071525574, y: -0.1899972}
+  m_Offset: {x: -0.008237839, y: -0.1899972}
   serializedVersion: 2
-  m_Radius: 0.8100021
+  m_Radius: 1.1148281

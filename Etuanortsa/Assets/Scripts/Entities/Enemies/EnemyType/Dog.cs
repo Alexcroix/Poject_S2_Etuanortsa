@@ -35,7 +35,6 @@ public class Dog : MonoBehaviourPunCallbacks
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
         if (collision.gameObject.TryGetComponent<Joueur>(out Joueur j) )
         {
             j.GetDamage(EnemyDamage);

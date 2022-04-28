@@ -9,41 +9,41 @@ public class animator_enemies : MonoBehaviour
     public AIPath aiPath;
     public bool x;
     public bool y;
-    public bool move;
+    public bool hit;
     // Start is called before the first frame update
     void Start()
     {
-        move = true;
+        hit = false;
     }
 
     // Update is called once per frame
     void Update()
     {
       
-        if (aiPath.desiredVelocity.x >= 0.01f && move)
+        if (aiPath.desiredVelocity.x >= 0.01f && !hit)
         {
             x = true;
         }
-        if (aiPath.desiredVelocity.x <= -0.01f && move)
+        if (aiPath.desiredVelocity.x <= -0.01f && !hit)
         {
             x = false;
         }
-        if (aiPath.desiredVelocity.y >= 0.01f && move)
+        if (aiPath.desiredVelocity.y >= 0.01f && !hit)
         {
             y = true;
         }
-        if (aiPath.desiredVelocity.y <= -0.01f && move)
+        if (aiPath.desiredVelocity.y <= -0.01f && !hit)
         {
             y = false;
         }
         if (aiPath.reachedEndOfPath == true)
         {
-            move =false;
+            hit =true;
         }
         
         if (!aiPath.reachedEndOfPath)
         {
-            move = true;
+            hit = false;
         }
         
         
@@ -53,6 +53,6 @@ public class animator_enemies : MonoBehaviour
     {
         animator.SetBool("x", x);
         animator.SetBool("y", y);
-        animator.SetBool("move", move);
+        animator.SetBool("hit", hit);
     }
 }
