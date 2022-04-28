@@ -108,7 +108,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.44
-  endReachedDistance: 1.5
+  endReachedDistance: 2.25
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -178,6 +178,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ad431b51ea2f34fb5642819dd8d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentEnemyType: 0
+  EnemyTag: 
+  MaxHealth: 0
+  currentHealth: 1
+  EnemyDamage: 10
+  EnemySpeed: 0
+  EnemyGains: 0
 --- !u!114 &4101830543683809055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +232,7 @@ MonoBehaviour:
     Name: y
   - Type: 4
     SynchronizeType: 0
-    Name: move
+    Name: hit
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -261,7 +268,7 @@ MonoBehaviour:
   aiPath: {fileID: 7464733623225679664}
   x: 0
   y: 0
-  move: 0
+  hit: 0
 --- !u!95 &1657728466933026636
 Animator:
   serializedVersion: 3
