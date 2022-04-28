@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -311.16495, y: -12.7}
+  m_AnchoredPosition: {x: -311.16495, y: -12.699997}
   m_SizeDelta: {x: -639.13, y: 14.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9176862555585215074
@@ -134,7 +134,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &1276083092704194961
 MonoBehaviour:
@@ -1146,8 +1146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 312.775, y: -19.25}
-  m_SizeDelta: {x: -640.73004, y: 26.488007}
+  m_AnchoredPosition: {x: 219.255, y: -19.25}
+  m_SizeDelta: {x: -453.69003, y: 26.488007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4209006448457778813
 CanvasRenderer:

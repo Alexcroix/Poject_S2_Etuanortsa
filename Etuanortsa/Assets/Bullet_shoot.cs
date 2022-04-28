@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Bullet_shoot : MonoBehaviour
+public class Bullet_shoot : MonoBehaviourPunCallbacks
 {
     public float speed = 50f;
     public Rigidbody2D rb;
@@ -16,7 +17,7 @@ public class Bullet_shoot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Destroy(gameObject);
+        
         if (hitInfo.gameObject.TryGetComponent<Dog>(out Dog d))
         {
             d.ReceiveDamage(damage);
@@ -33,5 +34,7 @@ public class Bullet_shoot : MonoBehaviour
         {
             bl.ReceiveDamage(damage);
         }
+
+        PhotonNetwork.Destroy(this.gameObject);
     }
 }

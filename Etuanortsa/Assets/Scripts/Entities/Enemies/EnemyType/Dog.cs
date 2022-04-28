@@ -12,23 +12,22 @@ public class Dog : MonoBehaviourPunCallbacks
 {
     private EnemyType CurrentEnemyType = EnemyType.DOG;
     private string EnemyTag = "Dog";
-    private int MaxHealth = 25;
-    public int currentHealth = 25;
+    private static int MaxHealth = 25;
+    private int currentHealth = MaxHealth;
     private int EnemyDamage = 35;
     private int EnemySpeed = 12;
     private int EnemyGains = 5;
 
 
-    public void UpdateHealth(int newHealthValue)
-    {
-        this.currentHealth = newHealthValue;
-    }
-
     public void ReceiveDamage(int damage)
     {
-        int updatedHealth = this.currentHealth - damage;
-        UpdateHealth(updatedHealth > 0 ? updatedHealth : 0);
+        currentHealth = this.currentHealth - damage;
+        if(currentHealth <= 0)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
+
     void Update()
     {   
         Seeker.listPlayer = Game.PosPlayer;

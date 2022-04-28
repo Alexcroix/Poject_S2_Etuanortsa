@@ -13,7 +13,7 @@ public class Weapon_shoot : MonoBehaviourPunCallbacks
         View = GetComponent<PhotonView>();
         if (View.IsMine)
         {
-            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 10f);
@@ -25,6 +25,6 @@ public class Weapon_shoot : MonoBehaviourPunCallbacks
     }
     void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, firePoint.rotation);
     }
 }
