@@ -16,16 +16,12 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Sprite[] HealthBar;
     public Text WaveCounterText;
 
-    //Sprite
-    private SpriteRenderer character;
-    private Color col;
-    private bool invisible;
-
     //movement
     Vector2 movement;
     Vector2 mousePos;
     Vector3 tempPos;
 
+    public bool Inv = false;
     public float mouse_x;
     public float mouse_y;
     public bool moving;
@@ -53,13 +49,12 @@ public class Joueur : MonoBehaviourPunCallbacks
         Game.PosPlayer.Add(pos);
         if (View.IsMine)
         {
-           
             PlayerCamera.SetActive(true);
 
             playerProperties["health"] = 100;
-            playerProperties["alive"] = true;
             playerProperties["name"] = PhotonNetwork.LocalPlayer.NickName;
-            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+            playerProperties["alive"] = true;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
 
             bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
             pauseMenu.SetActive(false);
@@ -148,37 +143,53 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             weapon.transform.position = tempPos;
         }
-
+        
     }
 
     public void GetDamage(int damage)
     {
-        playerProperties["health"] = (int)playerProperties["health"] - damage;
-        bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
-        if ((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] <= 0)
+        if (!Inv)
         {
-            PhotonNetwork.LocalPlayer.CustomProperties["alive"] = false;
+            Inv = true;
+
+            StartCoroutine(OnBecameInvinsible());
+            playerProperties["health"] = (int)playerProperties["health"] - damage;
+
+            bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
+
+
+
+
+            if ((int)playerProperties["health"] <= 0)
+            {
+                playerProperties["alive"] = false;
+                PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+                playerIsDead();
+            }
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
         }
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
-    // le met en invisible et enleve tout les armes
+
+    IEnumerator OnBecameInvinsible()
+    {
+        yield return new WaitForSeconds(1f);
+        Inv = false;
+    }
+
     public void playerIsDead()
     {
-        invisible = true;
-        col.a = .2f;
-        character.color = col;
-        weapons.Clear();
+        if (PhotonNetwork.PlayerList.Length == 1)
+        {
+            PhotonNetwork.LoadLevel("LooseScene");
+        }
+        else
+        {
+            Game.CheckEndGame(Game.WaveCounter);
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            this.GetComponent<BoxCollider2D>().enabled = false;
+            playerUI.SetActive(false);
+        }   
     }
-
-    // enleve l'invisibilité et ajouter l'arme de base
-    public void playerIsRevive()
-    {
-        invisible = false;
-        col.a = 1;
-        character.color = col;
-        //ajouter a la liste du joueur l'arme basique
-    }
-
 }
 

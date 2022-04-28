@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Weapon_shoot : MonoBehaviour
+using Photon.Pun;
+public class Weapon_shoot : MonoBehaviourPunCallbacks
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    PhotonView View;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        View = GetComponent<PhotonView>();
+        if (View.IsMine)
         {
-            Shoot();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
         }
     }
     void Shoot()

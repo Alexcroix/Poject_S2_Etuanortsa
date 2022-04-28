@@ -48,7 +48,6 @@ namespace Pathfinding
 			Seeker.attacks = true;
 			min = Seeker.listPlayer[0];
 			ai.canMove = true;
-
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>
@@ -60,6 +59,7 @@ namespace Pathfinding
 
 			for (int i = 0; i < nbjoueur; i++)
 			{
+
 				if (cvt(this.gameObject, Seeker.listPlayer[i]) < cvt(this.gameObject, min))
 				{
 
@@ -82,7 +82,7 @@ namespace Pathfinding
 		{
 	
 			ai.isStopped = true;
-			yield return new WaitForSeconds(10f);
+			yield return new WaitForSeconds(1f);
 			ai.isStopped = false;
 
 

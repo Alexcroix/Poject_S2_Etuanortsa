@@ -12,21 +12,23 @@ public class Game : MonoBehaviourPunCallbacks
     public static List<EnemyType> AllEnemies = new List<EnemyType>();
     public static List<Transform> PosPlayer = new List<Transform>();
     public static int WaveCounter = 0;
-    public static bool IsAWave = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
+    public static bool IsAWave = false;
     public static bool IsWaiting = false;
     private float timer = 0.0f;
-    public float waitingTime = 60.0f;
+    private float waitingTime = 0.0f;
     public bool TimeToWait = true;
-    public bool GameIsFinish = false;
-   
+    public static bool launchWave = false;
+    private bool WaveExist = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
+
     private void FixedUpdate()
     {
+        launchWave = false;
         if (TimeToWait) 
         {
             timer += Time.deltaTime;
             if (timer > waitingTime)
             {
-                timer = 0f;
+                timer = 0.0f;
                 TimeToWait = false;
                 IsAWave = true;
             }
@@ -36,10 +38,11 @@ public class Game : MonoBehaviourPunCallbacks
             if (IsAWave && WaveCounter < 31)
             {
                 WaveCounter++;
-                Enemies.StandardSpawn(WaveCounter);
+                launchWave = true;
                 IsAWave = false;
+                WaveExist = true;
             }
-            else
+            if (!WaveExist)
             {
                 CheckEndGame(WaveCounter);
                 TimeToWait = true;
@@ -47,14 +50,13 @@ public class Game : MonoBehaviourPunCallbacks
         }
     }
 
-    public void CheckEndGame(int WaveCounter)
+    public static void CheckEndGame(int WaveCounter)
     {
         if (WaveCounter == 31)
         {
             PhotonNetwork.LoadLevel("WinScene");
         }
-        bool Dead = false;
-        // a true
+        bool Dead = true;
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             if ((bool)player.CustomProperties["alive"])

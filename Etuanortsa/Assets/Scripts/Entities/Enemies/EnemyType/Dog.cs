@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Dog :MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class Dog : MonoBehaviourPunCallbacks
 {
     public EnemyType CurrentEnemyType;
 
@@ -26,21 +31,17 @@ public class Dog :MonoBehaviour
         UpdateHealth(updatedHealth > 0 ? updatedHealth : 0);
     }
     void Update()
-    {
-        
+    {   
         Seeker.listPlayer = Game.PosPlayer;
-        
-
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
 
         if (collision.gameObject.TryGetComponent<Joueur>(out Joueur j) )
         {
             j.GetDamage(EnemyDamage);
-            Debug.Log("lkyjthfgd");
         }
         
     }
-
 }

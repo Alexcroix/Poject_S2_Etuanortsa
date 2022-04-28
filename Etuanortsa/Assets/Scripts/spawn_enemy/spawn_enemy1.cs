@@ -15,15 +15,19 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
     public int nbenemy = Game.AllEnemies.Count;
     public Vector3 pointspawn;
     // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        new WaitForSeconds(10f);
-        Enemies.WaveGenerator(1);
-        StartCoroutine(EnemyDrop());
+        if (Game.launchWave)
+        {
+            Debug.Log("vague");
+            Enemies.WaveGenerator(Game.WaveCounter);
+            StartCoroutine(EnemyDrop());
+        }
     }
 
     IEnumerator EnemyDrop()
     {
+        
         int i = 0;
         foreach (EnemyType enemy in Enemies.AllEnemies)
         {
