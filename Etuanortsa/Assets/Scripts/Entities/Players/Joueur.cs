@@ -16,6 +16,11 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Sprite[] HealthBar;
     public Text WaveCounterText;
 
+    //Sprite
+    private SpriteRenderer character;
+    private Color col;
+    private bool invisible;
+
     //movement
     Vector2 movement;
     Vector2 mousePos;
@@ -125,11 +130,11 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             if (loorDir.y > 0)
             {
-                tempPos.z = -4;
+                tempPos.z = -1;
             }
             else
             {
-                tempPos.z = -6;
+                tempPos.z = -8;
             }
 
             if (loorDir.x <= 0)
@@ -143,7 +148,7 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             weapon.transform.position = tempPos;
         }
-        
+
     }
 
     public void GetDamage(int damage)
@@ -157,13 +162,23 @@ public class Joueur : MonoBehaviourPunCallbacks
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
-    /*public void playerIsDead()
+    // le met en invisible et enleve tout les armes
+    public void playerIsDead()
     {
         invisible = true;
         col.a = .2f;
         character.color = col;
         weapons.Clear();
-    }*/
+    }
+
+    // enleve l'invisibilité et ajouter l'arme de base
+    public void playerIsRevive()
+    {
+        invisible = false;
+        col.a = 1;
+        character.color = col;
+        //ajouter a la liste du joueur l'arme basique
+    }
 
 }
 
