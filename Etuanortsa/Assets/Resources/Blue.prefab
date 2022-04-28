@@ -1285,6 +1285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2163585508788066952, guid: 4b3229bbbc82fdb4ea91ee775b2b1f58, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5992809475204795116, guid: 4b3229bbbc82fdb4ea91ee775b2b1f58, type: 3}
       propertyPath: m_Name
       value: Mitraillette

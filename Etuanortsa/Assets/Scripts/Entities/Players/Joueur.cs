@@ -125,10 +125,12 @@ public class Joueur : MonoBehaviourPunCallbacks
             if (loorDir.y > 0)
             {
                 tempPos.z = -1;
+                weapon.GetComponent<SpriteRenderer>().sortingOrder = 0;
             }
             else
             {
-                tempPos.z = -8;
+                tempPos.z = -7;
+                weapon.GetComponent<SpriteRenderer>().sortingOrder = 1;
             }
 
             if (loorDir.x <= 0)
