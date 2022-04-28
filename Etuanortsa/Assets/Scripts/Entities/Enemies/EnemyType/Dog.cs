@@ -10,15 +10,14 @@ using UnityEngine.SceneManagement;
 
 public class Dog : MonoBehaviourPunCallbacks
 {
-    public EnemyType CurrentEnemyType;
+    private EnemyType CurrentEnemyType = EnemyType.DOG;
+    private string EnemyTag = "Dog";
+    private int MaxHealth = 25;
+    public int currentHealth = 25;
+    private int EnemyDamage = 35;
+    private int EnemySpeed = 12;
+    private int EnemyGains = 5;
 
-    public string EnemyTag;
-    public int MaxHealth;
-    public int currentHealth;
-    public int EnemyDamage;
-    public int EnemySpeed;
-    public int EnemyGains;
-    
 
     public void UpdateHealth(int newHealthValue)
     {
