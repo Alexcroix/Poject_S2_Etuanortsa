@@ -21,7 +21,7 @@ namespace Pathfinding
 	{
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
-		private Transform min;
+		private Transform min = null;
 		public float hitboxmob;
 		public float hitboxplayer; // on doit le supprimer plus tard (il faut recuperer le hit box du joueur il est le meme pour tt les personnes)
 		bool end = false;
@@ -46,13 +46,21 @@ namespace Pathfinding
 		void Start()
 		{
 			Seeker.attacks = true;
-			min = Seeker.listPlayer[0];
+			if (Seeker.listPlayer.Count!= 0)
+            {
+				min = Seeker.listPlayer[0];
+			}
+			
 			ai.canMove = true;
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update()
 		{
+			while (min == null)
+            {
+				min = Seeker.listPlayer[0];
+			}
 			int nbjoueur = Seeker.listPlayer.Count;
 
 			bool f = ai.reachedEndOfPath;
