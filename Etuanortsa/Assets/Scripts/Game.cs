@@ -20,10 +20,17 @@ public class Game : MonoBehaviourPunCallbacks
     public static bool launchWave = false;
     private bool WaveExist = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
     public static int Money;
+    public static  AudioSource Music;
 
     private void Start()
     {
         Money = 0;
+        GameObject[] OldMusic = GameObject.FindGameObjectsWithTag("GameMusic");
+        foreach (var m in OldMusic)
+        {
+            Destroy(m);
+        }
+        Music = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -43,6 +50,7 @@ public class Game : MonoBehaviourPunCallbacks
         {
             if (IsAWave && WaveCounter < 31)
             {
+                this.photonView.RPC("ChangeToMusicOfPhase", RpcTarget.AllViaServer);
                 WaveCounter++;
                 launchWave = true;
                 IsAWave = false;
@@ -52,6 +60,7 @@ public class Game : MonoBehaviourPunCallbacks
             {
                 CheckEndGame(WaveCounter);
                 TimeToWait = true;
+                this.photonView.RPC("ChangeToMusicOfShop", RpcTarget.AllViaServer);
             }
         }
     }
@@ -74,5 +83,28 @@ public class Game : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.LoadLevel("LooseScene");
         }
+    }
+
+    //Music
+
+   
+    [SerializeField] AudioClip[] JukeboxPhase;
+    [SerializeField] AudioClip[] JukeboxShop;
+    
+
+    [PunRPC]
+    public void ChangeToMusicOfPhase()
+    {
+        Music.Stop();
+        Music.clip = JukeboxPhase[0];
+        Music.Play();
+    }
+
+    [PunRPC]
+    public void ChangeToMusicOfShop()
+    {
+        Music.Stop();
+        Music.clip = JukeboxShop[0];
+        Music.Play();
     }
 }

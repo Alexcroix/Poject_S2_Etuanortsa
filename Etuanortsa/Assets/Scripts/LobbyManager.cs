@@ -152,6 +152,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickPlayButton()
     {
+        Destroy(GameObject.FindGameObjectWithTag("GameMusic"));
+
         PhotonNetwork.LoadLevel("level");
     }
 }

@@ -46,6 +46,9 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Sprite Left_weapon;
     public Sprite Right_weapon;
 
+    public static float SoundEffect = 0.5f;
+    public static float SoundMusic = 0.5f;
+
     public float MovementSpeed = 10f;
 
     void Start()
@@ -251,6 +254,17 @@ public class Joueur : MonoBehaviourPunCallbacks
             Right_Weapon = sprite;
             */
         }
+    }
+
+    public void OnMovingSliderMusic(float Value)
+    {
+        SoundMusic = Value;
+        Game.Music.volume = Value;
+    }
+    public void OnMovingSliderEffect(float Value)
+    {
+        SoundEffect = Value;
+
     }
 }
 
