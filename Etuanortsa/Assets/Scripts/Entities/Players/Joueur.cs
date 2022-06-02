@@ -10,10 +10,17 @@ public class Joueur : MonoBehaviourPunCallbacks
 {
     ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
     //UI
+    public GameObject shopMenu;
+    public GameObject GunShop;
+    public GameObject LazerGunShop;
+    public GameObject MachineGunShop;
+    public GameObject Reviveshop;
+    public Sprite DefaultShop;
     public GameObject pauseMenu;
     public GameObject playerUI;
     public Image bar;
     public Sprite[] HealthBar;
+    public Text MoneyCounterText;
     public Text WaveCounterText;
 
     //movement
@@ -38,7 +45,6 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Rigidbody2D weapon;
     public Sprite Left_weapon;
     public Sprite Right_weapon;
-    public List<Weapon> weapons = new List<Weapon>();
 
     public float MovementSpeed = 10f;
 
@@ -58,13 +64,18 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             bar.sprite = HealthBar[(int)playerProperties["health"] / 10];
             pauseMenu.SetActive(false);
+            shopMenu.SetActive(false);
+            GunShop.SetActive(false);
+            LazerGunShop.SetActive(false);
+            MachineGunShop.SetActive(false);
+            Reviveshop.SetActive(false);
             playerUI.SetActive(true);
-
         }
     }
 
     private void Update()
     {
+        MoneyCounterText.text = "" + Game.Money;
         if (View.IsMine)
         {
             if (Game.IsWaiting)
@@ -75,16 +86,53 @@ public class Joueur : MonoBehaviourPunCallbacks
             {
                 WaveCounterText.text = "Time to prepare";
             }
-            
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (pauseMenu.activeSelf)
+                if(shopMenu.activeSelf)
                 {
-                    pauseMenu.SetActive(false);
+                    shopMenu.SetActive(false);
                 }
                 else
                 {
-                    pauseMenu.SetActive(true);
+                    if (pauseMenu.activeSelf)
+                    {
+                        pauseMenu.SetActive(false);
+                    }
+                    else
+                    {
+                        pauseMenu.SetActive(true);
+                    }
+                }
+            }
+
+            /*
+            if(!Game.TimeToWait && shopMenu.activeSelf)
+            {
+                shopMenu.SetActive(false);
+            }
+            */
+
+            if (Input.GetKeyDown(KeyCode.E)) //a jouter Game.TimeToWait
+            {
+                if(!pauseMenu.activeSelf)
+                {
+                    GunShop.SetActive(true);
+                    LazerGunShop.SetActive(false);
+                    MachineGunShop.SetActive(false);
+                    Reviveshop.SetActive(false);
+
+                    ItemBuy.Item = DefaultShop;
+                    ItemBuy.ItemCost = 1000;
+
+                    if (shopMenu.activeSelf)
+                    {
+                        shopMenu.SetActive(false);
+                    }
+                    else
+                    {
+                        shopMenu.SetActive(true);
+                    }
                 }
             }
 
@@ -191,6 +239,18 @@ public class Joueur : MonoBehaviourPunCallbacks
             this.GetComponent<BoxCollider2D>().enabled = false;
             playerUI.SetActive(false);
         }   
+    }
+
+    public static void BuyWeapon(int itemCost, Sprite sprite)
+    {
+        if(Game.Money >= itemCost)
+        {
+            Game.Money -= itemCost;
+            /*
+            Left_Weapon = sprite;
+            Right_Weapon = sprite;
+            */
+        }
     }
 }
 

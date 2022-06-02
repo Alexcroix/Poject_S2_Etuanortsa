@@ -16,9 +16,15 @@ public class Game : MonoBehaviourPunCallbacks
     public static bool IsWaiting = false;
     private float timer = 0.0f;
     private float waitingTime = 0.0f;
-    public bool TimeToWait = true;
+    public static bool TimeToWait = true;
     public static bool launchWave = false;
     private bool WaveExist = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
+    public static int Money;
+
+    private void Start()
+    {
+        Money = 0;
+    }
 
     private void FixedUpdate()
     {
