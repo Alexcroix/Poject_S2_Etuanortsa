@@ -56,6 +56,7 @@ public class Joueur : MonoBehaviourPunCallbacks
         View = GetComponent<PhotonView>();
         pos = GetComponent<Transform>();
         Game.PosPlayer.Add(pos);
+        MoneyCounterText.text = "" + Game.Money;
         if (View.IsMine)
         {
             PlayerCamera.SetActive(true);
@@ -125,8 +126,8 @@ public class Joueur : MonoBehaviourPunCallbacks
                     MachineGunShop.SetActive(false);
                     Reviveshop.SetActive(false);
 
-                    ItemBuy.Item = DefaultShop;
-                    ItemBuy.ItemCost = 1000;
+                    //Item = DefaultShop;
+                    ItemCost = 1000;
 
                     if (shopMenu.activeSelf)
                     {
@@ -244,17 +245,29 @@ public class Joueur : MonoBehaviourPunCallbacks
         }   
     }
 
-    public static void BuyWeapon(int itemCost, Sprite sprite)
+    public static int ItemCost;
+    //public static Sprite Item;
+
+    public void Buy()
     {
-        if(Game.Money >= itemCost)
+        if (Game.Money >= ItemCost)
         {
-            Game.Money -= itemCost;
+            this.photonView.RPC("BuyWeapon", RpcTarget.All, ItemCost);
             /*
             Left_Weapon = sprite;
             Right_Weapon = sprite;
             */
         }
     }
+
+    [PunRPC]
+    public void BuyWeapon(int itemCost)
+    {
+        Game.Money -= itemCost;
+    }
+
+
+    //MUSIC
 
     public void OnMovingSliderMusic(float Value)
     {

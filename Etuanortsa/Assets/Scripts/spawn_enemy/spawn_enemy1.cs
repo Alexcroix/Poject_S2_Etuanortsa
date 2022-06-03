@@ -19,7 +19,6 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
     {
         if (Game.launchWave)
         {
-            Debug.Log("vague");
             Enemies.WaveGenerator(Game.WaveCounter);
             StartCoroutine(EnemyDrop());
         }

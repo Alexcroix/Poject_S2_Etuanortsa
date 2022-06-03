@@ -22,8 +22,8 @@ public class ItemButton : MonoBehaviour
 
             Item.SetActive(true);
 
-            ItemBuy.ItemCost = Cost;
-            ItemBuy.Item = sprite;
+            Joueur.ItemCost = Cost;
+            //Joueur.Item = sprite;
         }
     }
 }
