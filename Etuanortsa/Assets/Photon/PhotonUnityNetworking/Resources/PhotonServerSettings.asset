@@ -40,9 +40,10 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPC_PlayerIsDead
+  - WeaponShotSound
+  - WeaponShot
   - ChangeToMusicOfPhase
   - ChangeToMusicOfShop
-  - WeaponShot
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

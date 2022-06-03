@@ -133,9 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 18278198}
   - component: {fileID: 18278197}
+  - component: {fileID: 18278199}
   - component: {fileID: 18278200}
   - component: {fileID: 18278201}
-  - component: {fileID: 18278199}
   m_Layer: 0
   m_Name: PlayerSpawner
   m_TagString: Untagged

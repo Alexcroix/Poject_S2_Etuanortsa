@@ -20,17 +20,17 @@ public class Game : MonoBehaviourPunCallbacks
     public static bool launchWave = false;
     private bool WaveExist = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
     public static int Money;
-    public static  AudioSource Music;
+    public static AudioSource Music;
 
     private void Start()
     {
+        Music = GetComponent<AudioSource>();
         Money = 0;
         GameObject[] OldMusic = GameObject.FindGameObjectsWithTag("GameMusic");
         foreach (var m in OldMusic)
         {
             Destroy(m);
         }
-        Music = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
