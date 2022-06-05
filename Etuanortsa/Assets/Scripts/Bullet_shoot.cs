@@ -9,6 +9,7 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
     public Rigidbody2D rb;
     public int damage = 10;
     // Start is called before the first frame update
+    [SerializeField] AudioClip[] Jukebox;
 
     void Start()
     {
@@ -20,21 +21,33 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
         
         if (hitInfo.gameObject.TryGetComponent<Dog>(out Dog d))
         {
+            this.photonView.RPC("WeaponCollideAudio", RpcTarget.All, 1, this.transform.position);
             d.ReceiveDamage(damage);
         }
-        if (hitInfo.gameObject.TryGetComponent<Standard>(out Standard s))
+        else if (hitInfo.gameObject.TryGetComponent<Standard>(out Standard s))
         {
+            this.photonView.RPC("WeaponCollideAudio", RpcTarget.All, 1, this.transform.position);
             s.ReceiveDamage(damage);
         }
-        if (hitInfo.gameObject.TryGetComponent<Boss>(out Boss b))
+        else if (hitInfo.gameObject.TryGetComponent<Boss>(out Boss b))
         {
             b.ReceiveDamage(damage);
         }
-        if (hitInfo.gameObject.TryGetComponent<Blob>(out Blob bl))
+        else if (hitInfo.gameObject.TryGetComponent<Blob>(out Blob bl))
         {
             bl.ReceiveDamage(damage);
         }
+        else
+        {
+            this.photonView.RPC("WeaponCollideAudio", RpcTarget.All, 0,this.transform.position);
+        }
 
         PhotonNetwork.Destroy(this.gameObject);
+    }
+
+    [PunRPC]
+    public void WeaponCollideAudio(int Sound,Vector3 pos)
+    {
+        AudioSource.PlayClipAtPoint(Jukebox[Sound],pos,Joueur.SoundEffect);
     }
 }

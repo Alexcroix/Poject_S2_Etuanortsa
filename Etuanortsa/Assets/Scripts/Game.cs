@@ -90,7 +90,11 @@ public class Game : MonoBehaviourPunCallbacks
    
     [SerializeField] AudioClip[] JukeboxPhase;
     [SerializeField] AudioClip[] JukeboxShop;
-    
+
+    public static void ChangeVolumeOfMusique(float value)
+    {
+        Music.volume = value;
+    }
 
     [PunRPC]
     public void ChangeToMusicOfPhase()

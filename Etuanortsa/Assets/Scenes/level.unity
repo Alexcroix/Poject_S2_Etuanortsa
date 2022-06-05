@@ -189,7 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JukeboxPhase:
   - {fileID: 8300000, guid: d42c20252ec54cb4fa09f41ab76ef5ad, type: 3}
-  JukeboxShop: []
+  JukeboxShop:
+  - {fileID: 8300000, guid: 008ba8fdb79568e47810aa4082fa060f, type: 3}
 --- !u!114 &18278200
 MonoBehaviour:
   m_ObjectHideFlags: 0

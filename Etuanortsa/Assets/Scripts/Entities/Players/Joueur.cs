@@ -12,6 +12,7 @@ public class Joueur : MonoBehaviourPunCallbacks
     //UI
     public GameObject shopMenu;
     public GameObject GunShop;
+    public GameObject SoundMenu;
     public GameObject LazerGunShop;
     public GameObject MachineGunShop;
     public GameObject Reviveshop;
@@ -93,7 +94,7 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if(shopMenu.activeSelf)
+                if (shopMenu.activeSelf)
                 {
                     shopMenu.SetActive(false);
                 }
@@ -105,10 +106,15 @@ public class Joueur : MonoBehaviourPunCallbacks
                     }
                     else
                     {
+                        if (SoundMenu.activeSelf)
+                        {
+                            SoundMenu.SetActive(false);
+                        }
                         pauseMenu.SetActive(true);
                     }
                 }
             }
+
 
             /*
             if(!Game.TimeToWait && shopMenu.activeSelf)
@@ -119,7 +125,7 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             if (Input.GetKeyDown(KeyCode.E)) //a jouter Game.TimeToWait
             {
-                if(!pauseMenu.activeSelf)
+                if (!pauseMenu.activeSelf)
                 {
                     GunShop.SetActive(true);
                     LazerGunShop.SetActive(false);
@@ -164,7 +170,7 @@ public class Joueur : MonoBehaviourPunCallbacks
             Vector2 loorDir = mousePos;
             loorDir.x = loorDir.x - 0.5f;
             loorDir.y = loorDir.y - 0.5f;
-            
+
 
             //SetValueAnimator
             animator.SetFloat("mouse_x", mouse_x);
@@ -196,7 +202,7 @@ public class Joueur : MonoBehaviourPunCallbacks
 
             weapon.transform.position = tempPos;
         }
-        
+
     }
 
     public void GetDamage(int damage)
@@ -242,7 +248,7 @@ public class Joueur : MonoBehaviourPunCallbacks
             this.GetComponent<SpriteRenderer>().enabled = false;
             this.GetComponent<BoxCollider2D>().enabled = false;
             playerUI.SetActive(false);
-        }   
+        }
     }
 
     public static int ItemCost;
@@ -260,6 +266,14 @@ public class Joueur : MonoBehaviourPunCallbacks
         }
     }
 
+
+    public void OnClickSoundButton()
+    {
+        pauseMenu.SetActive(false);
+        SoundMenu.SetActive(true);
+    }
+
+
     [PunRPC]
     public void BuyWeapon(int itemCost)
     {
@@ -272,12 +286,11 @@ public class Joueur : MonoBehaviourPunCallbacks
     public void OnMovingSliderMusic(float Value)
     {
         SoundMusic = Value;
-        Game.Music.volume = Value;
+        Game.ChangeVolumeOfMusique(Value);
     }
     public void OnMovingSliderEffect(float Value)
     {
         SoundEffect = Value;
-
     }
 }
 

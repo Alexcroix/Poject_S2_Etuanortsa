@@ -149,6 +149,9 @@ MonoBehaviour:
   speed: 20
   rb: {fileID: 3444201584795258662}
   damage: 10
+  Jukebox:
+  - {fileID: 8300000, guid: 39cb532522141e245af6b958fa340977, type: 3}
+  - {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
 --- !u!114 &742186480466109600
 MonoBehaviour:
   m_ObjectHideFlags: 0

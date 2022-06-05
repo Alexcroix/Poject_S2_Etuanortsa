@@ -12,6 +12,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject LobbyPannel;
     public GameObject roomPannel;
     public Text roomName;
+    public GameObject ChangeColor;
 
     public RoomItem roomItemPrefab;
     List<RoomItem> roomItemslist = new List<RoomItem>();
@@ -152,8 +153,38 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickPlayButton()
     {
-        Destroy(GameObject.FindGameObjectWithTag("GameMusic"));
+        bool valid = true;
+        List<int> val = new List<int>();
+        int i = 0;
+        Player[] pl = PhotonNetwork.PlayerList;
+        while (i < pl.Length && valid)
+        {
+            if(val.Contains((int)pl[i].CustomProperties["playerAvatar"]))
+            {
+                valid = false;
+            }
+            else 
+            {
+                val.Add((int)pl[i].CustomProperties["playerAvatar"]);
+            }
+            i++;
+        }
 
-        PhotonNetwork.LoadLevel("level");
+        if(valid) 
+        {
+            Destroy(GameObject.FindGameObjectWithTag("GameMusic"));
+            PhotonNetwork.LoadLevel("level");
+        }
+        else 
+        {
+            StartCoroutine(Change());
+        }
+    }
+
+    IEnumerator Change()
+    {
+        ChangeColor.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        ChangeColor.SetActive(false);
     }
 }
