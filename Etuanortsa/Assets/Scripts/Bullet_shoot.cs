@@ -41,8 +41,11 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
         {
             this.photonView.RPC("WeaponCollideAudio", RpcTarget.All, 0,this.transform.position);
         }
-
-        PhotonNetwork.Destroy(this.gameObject);
+        if (hitInfo.tag != "spawn_enemy")
+        {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+        
     }
 
     [PunRPC]

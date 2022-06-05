@@ -50,9 +50,16 @@ public class Game : MonoBehaviourPunCallbacks
         {
             if (IsAWave && WaveCounter < 31)
             {
+                
                 this.photonView.RPC("ChangeToMusicOfPhase", RpcTarget.AllViaServer);
                 WaveCounter++;
+                
+
                 launchWave = true;
+
+               
+
+
                 IsAWave = false;
                 WaveExist = true;
             }
@@ -99,6 +106,7 @@ public class Game : MonoBehaviourPunCallbacks
     [PunRPC]
     public void ChangeToMusicOfPhase()
     {
+        
         Music.Stop();
         Music.clip = JukeboxPhase[0];
         Music.Play();

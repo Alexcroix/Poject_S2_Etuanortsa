@@ -14,11 +14,15 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
     public float Ypos = 0;
     public int nbenemy = Game.AllEnemies.Count;
     public Vector3 pointspawn;
+    public List<(int, int)> coor_salle;  //
     // Start is called before the first frame update
     void FixedUpdate()
     {
         if (Game.launchWave)
         {
+            
+            coor_salle = new List<(int, int)> {(-54,-44),(-11,-14), (-11,-48), (25,-20), (25,-45), (81,-17), (92,-41), (129,35), (35,8), (93,43), (-13,11), (34,34), (-58,-8), (-13,28)};
+            Debug.Log("vague");
             Enemies.WaveGenerator(Game.WaveCounter);
             StartCoroutine(EnemyDrop());
         }
@@ -30,15 +34,24 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
         int i = 0;
         foreach (EnemyType enemy in Enemies.AllEnemies)
         {
-            Xpos = Random.Range(-55, 24);
-            Ypos = Random.Range(-14, -49);
+            
+            int rng = Random.Range(0, 7);       //
+            rng *= 2;                       //
+            (int, int) coor1 = coor_salle[rng];  //
+            (int, int) coor2 = coor_salle[rng+1];      //
+            Xpos = Random.Range(coor1.Item1, coor2.Item1);           // faut voir si ca marche
+            Ypos = Random.Range(coor1.Item2, coor2.Item2);
+            //Xpos = Random.Range(-55, 24); 
+            //Ypos = Random.Range(-14, -49);
             pointspawn.x = Xpos;
             pointspawn.y = Ypos;
             
             while (!col.OverlapPoint(pointspawn))
             {
-                Xpos = Random.Range(-55, 24);
-                Ypos = Random.Range(-14, -49);
+                Xpos = Random.Range(coor1.Item1, coor2.Item1);           // faut voir si ca marche
+                Ypos = Random.Range(coor1.Item2, coor2.Item2);
+                //Xpos = Random.Range(-55, 24);
+                //Ypos = Random.Range(-14, -49);
                 pointspawn.x = Xpos;
                 pointspawn.y = Ypos;
             }
@@ -62,11 +75,7 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
 
             PhotonNetwork.Instantiate(Mob.name, pointspawn, Quaternion.identity);
             yield return new WaitForSeconds(1f);
-            if (i == 1)
-            {
-                break;
-            }
-            i++;
+            
         }
     }
 }
