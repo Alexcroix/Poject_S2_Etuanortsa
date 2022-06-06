@@ -29,10 +29,7 @@ public class Blob : MonoBehaviourPunCallbacks
         int updatedHealth = this.currentHealth - damage;
         UpdateHealth(updatedHealth > 0 ? updatedHealth : 0);
     }
-    void Update()
-    {
-        Seeker.listPlayer = Game.PosPlayer;
-    }
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {

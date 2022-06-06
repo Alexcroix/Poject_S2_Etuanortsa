@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviourPunCallbacks
 {
     public static List<EnemyType> AllEnemies = new List<EnemyType>();
-    public static List<Transform> PosPlayer = new List<Transform>();
+    
     public static int WaveCounter = 0;
     public static bool IsAWave = false;
     public static bool IsWaiting = false;
@@ -35,6 +35,11 @@ public class Game : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
+        
+        
+        this.photonView.RPC("ChangeSeeker", RpcTarget.All);
+        
+        
         launchWave = false;
         if (TimeToWait) 
         {
@@ -58,8 +63,6 @@ public class Game : MonoBehaviourPunCallbacks
                 launchWave = true;
 
                
-
-
                 IsAWave = false;
                 WaveExist = true;
             }
@@ -70,6 +73,7 @@ public class Game : MonoBehaviourPunCallbacks
                 this.photonView.RPC("ChangeToMusicOfShop", RpcTarget.AllViaServer);
             }
         }
+        
     }
 
     public static void CheckEndGame(int WaveCounter)
@@ -78,23 +82,17 @@ public class Game : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.LoadLevel("WinScene");
         }
-        bool Dead = true;
-        foreach (Player player in PhotonNetwork.PlayerList)
-        {
-            if ((bool)player.CustomProperties["alive"])
-            {
-                Dead = false;
-            }
-        }
-        if (Dead)
-        {
-            PhotonNetwork.LoadLevel("LooseScene");
-        }
+    }
+
+    public static void RemovePlayer(GameObject p)
+    {
+        Destroy(p);
+        PhotonNetwork.Destroy(p);   
     }
 
     //Music
 
-   
+
     [SerializeField] AudioClip[] JukeboxPhase;
     [SerializeField] AudioClip[] JukeboxShop;
 
@@ -119,4 +117,17 @@ public class Game : MonoBehaviourPunCallbacks
         Music.clip = JukeboxShop[0];
         Music.Play();
     }
+
+    [PunRPC]
+    void ChangeSeeker()
+    {
+        GameObject[] g = GameObject.FindGameObjectsWithTag("Player");
+        List<Transform> trans = new List<Transform>();
+        foreach (var t in g)
+        {     
+            trans.Add(t.transform);
+        }
+        Pathfinding.Seeker.listPlayer = trans;
+    }
+
 }

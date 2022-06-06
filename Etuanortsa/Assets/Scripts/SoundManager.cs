@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     public Slider VolumeSlider;
+    float MusicVolume;
 
     [SerializeField]
     AudioSource Music ;
-    public float MusicVolume = 0.25f;
+    
+
+    private void Start()
+    {
+        MusicVolume = VolumeSlider.value;
+    }
     public void OnMovingSliderMusic(float Value)
     {
         MusicVolume = Value;

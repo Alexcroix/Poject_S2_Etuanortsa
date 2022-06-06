@@ -18,11 +18,10 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void FixedUpdate()
     {
-        if (Game.launchWave)
+        if (Game.launchWave && PhotonNetwork.IsMasterClient)
         {
             
             coor_salle = new List<(int, int)> {(-54,-44),(-11,-14), (-11,-48), (25,-20), (25,-45), (81,-17), (92,-41), (129,35), (35,8), (93,43), (-13,11), (34,34), (-58,-8), (-13,28)};
-            Debug.Log("vague");
             Enemies.WaveGenerator(Game.WaveCounter);
             StartCoroutine(EnemyDrop());
         }
@@ -73,9 +72,8 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
                         break;
             }
 
-            PhotonNetwork.Instantiate(Mob.name, pointspawn, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject(Mob.name, pointspawn, Quaternion.identity);
             yield return new WaitForSeconds(1f);
-            
         }
     }
 }

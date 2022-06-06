@@ -28,11 +28,6 @@ public class Dog : MonoBehaviourPunCallbacks
         }
     }
 
-    void Update()
-    {   
-        Seeker.listPlayer = Game.PosPlayer;
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Joueur>(out Joueur j) )

@@ -23,7 +23,6 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Sprite[] HealthBar;
     public Text MoneyCounterText;
     public Text WaveCounterText;
-
     //movement
     Vector2 movement;
     Vector2 mousePos;
@@ -54,9 +53,10 @@ public class Joueur : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        
         View = GetComponent<PhotonView>();
         pos = GetComponent<Transform>();
-        Game.PosPlayer.Add(pos);
+        
         MoneyCounterText.text = "" + Game.Money;
         if (View.IsMine)
         {
@@ -238,17 +238,11 @@ public class Joueur : MonoBehaviourPunCallbacks
 
     public void playerIsDead()
     {
-        if (PhotonNetwork.PlayerList.Length == 1)
-        {
-            PhotonNetwork.LoadLevel("LooseScene");
-        }
-        else
-        {
-            Game.CheckEndGame(Game.WaveCounter);
-            this.GetComponent<SpriteRenderer>().enabled = false;
-            this.GetComponent<BoxCollider2D>().enabled = false;
-            playerUI.SetActive(false);
-        }
+        
+        PhotonNetwork.Destroy(this.photonView);
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Menu");
+
     }
 
     public static int ItemCost;
