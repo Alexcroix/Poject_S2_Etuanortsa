@@ -36,6 +36,7 @@ public class Game : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
+        
         WaveExist = !(GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
 
 
@@ -80,7 +81,11 @@ public class Game : MonoBehaviourPunCallbacks
         
     }
 
-    
+    [PunRPC]
+    public void GiveMoney(int itemCost)
+    {
+        Game.Money -= itemCost;
+    }
 
     public static void CheckEndGame(int WaveCounter)
     {

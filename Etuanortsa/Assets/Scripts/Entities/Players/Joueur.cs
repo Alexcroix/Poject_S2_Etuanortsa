@@ -280,8 +280,6 @@ public class Joueur : MonoBehaviourPunCallbacks
 
     }
 
-    
-    //public static Sprite Item;
 
     public void Buy()
     {
