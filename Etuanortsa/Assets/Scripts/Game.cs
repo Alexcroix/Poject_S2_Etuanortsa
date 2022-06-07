@@ -34,6 +34,11 @@ public class Game : MonoBehaviourPunCallbacks
         }
     }
 
+    public static void MobDrop(int i)
+    {
+        Money += i;
+    }
+
     private void FixedUpdate()
     {
         

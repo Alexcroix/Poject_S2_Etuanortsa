@@ -144,13 +144,6 @@ public class Joueur : MonoBehaviourPunCallbacks
             }
 
 
-            /*
-            if(!Game.TimeToWait && shopMenu.activeSelf)
-            {
-                shopMenu.SetActive(false);
-            }
-            */
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (!pauseMenu.activeSelf)
@@ -335,9 +328,10 @@ public class Joueur : MonoBehaviourPunCallbacks
         SoundMenu.SetActive(true);
     }
 
+    
 
     [PunRPC]
-    public void BuyWeapon(int itemCost)
+    public static void BuyWeapon(int itemCost)
     {
         Game.Money -= itemCost;
     }

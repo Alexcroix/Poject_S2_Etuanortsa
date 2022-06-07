@@ -23,7 +23,7 @@ public class Dog : MonoBehaviourPunCallbacks
         currentHealth = this.currentHealth - damage;
         if(currentHealth <= 0)
         {
-            this.photonView.RPC("BuyWeapon", RpcTarget.All, -25);
+            Game.MobDrop(25);
             PhotonNetwork.Destroy(gameObject);
         }
     }
@@ -36,12 +36,4 @@ public class Dog : MonoBehaviourPunCallbacks
         }
         
     }
-
-    [PunRPC]
-    public void BuyWeapon(int itemCost)
-    {
-        Game.Money -= itemCost;
-    }
-
-
 }
