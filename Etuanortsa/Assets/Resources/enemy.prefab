@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 6191983219745626164}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   radius: 0.95
   height: 2
   canMove: 1
-  maxSpeed: 6
+  maxSpeed: 9
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ad431b51ea2f34fb5642819dd8d83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 15
 --- !u!114 &4101830543683809055
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cef5fb4b14103448843ec9ce42b690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 35
   rb: {fileID: 3444201584795258662}
   damage: 10
   Jukebox:

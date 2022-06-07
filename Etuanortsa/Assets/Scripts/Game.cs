@@ -15,17 +15,18 @@ public class Game : MonoBehaviourPunCallbacks
     public static bool IsAWave = false;
     public static bool IsWaiting = false;
     private float timer = 0.0f;
-    private float waitingTime = 0.0f;
+    private float waitingTime = 15.0f;
     public static bool TimeToWait = true;
     public static bool launchWave = false;
-    private bool WaveExist = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
+    public static bool WaveExist = false;//verifier si tous les enemies sont mort a chaque mort d'un enemies,passe a true si ils sont tous mort
     public static int Money;
     public static AudioSource Music;
+    public static int WaveSize;
 
     private void Start()
     {
         Music = GetComponent<AudioSource>();
-        Money = 10000;
+        Money = 0;
         GameObject[] OldMusic = GameObject.FindGameObjectsWithTag("GameMusic");
         foreach (var m in OldMusic)
         {
@@ -35,8 +36,9 @@ public class Game : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
-        
-        
+        WaveExist = !(GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
+
+
         this.photonView.RPC("ChangeSeeker", RpcTarget.All);
         
         
@@ -64,8 +66,10 @@ public class Game : MonoBehaviourPunCallbacks
 
                
                 IsAWave = false;
+
                 WaveExist = true;
             }
+            
             if (!WaveExist)
             {
                 CheckEndGame(WaveCounter);
@@ -75,6 +79,8 @@ public class Game : MonoBehaviourPunCallbacks
         }
         
     }
+
+    
 
     public static void CheckEndGame(int WaveCounter)
     {

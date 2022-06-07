@@ -12,7 +12,7 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
     public CompositeCollider2D col;
     public float Xpos = 0;
     public float Ypos = 0;
-    public int nbenemy = Game.AllEnemies.Count;
+    
     public Vector3 pointspawn;
     public List<(int, int)> coor_salle;  //
     // Start is called before the first frame update
@@ -29,8 +29,6 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
 
     IEnumerator EnemyDrop()
     {
-        
-        int i = 0;
         foreach (EnemyType enemy in Enemies.AllEnemies)
         {
             
@@ -74,6 +72,8 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
 
             PhotonNetwork.InstantiateRoomObject(Mob.name, pointspawn, Quaternion.identity);
             yield return new WaitForSeconds(1f);
+
+            
         }
     }
 }

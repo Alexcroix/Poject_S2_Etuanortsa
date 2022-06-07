@@ -9,7 +9,11 @@ public class ItemButton : MonoBehaviour
     public GameObject[] Items;
 
     public int Cost;
-    public Sprite sprite;
+    public Rigidbody2D weapon;
+    public Sprite Sprite_right;
+    public Sprite Sprite_left;
+    public int place;
+    public bool heal;
 
     public void CurrentItemChange()
     {
@@ -23,7 +27,11 @@ public class ItemButton : MonoBehaviour
             Item.SetActive(true);
 
             Joueur.ItemCost = Cost;
-            //Joueur.Item = sprite;
+            Joueur.SelectedWeapon = weapon;
+            Joueur.left = Sprite_left;
+            Joueur.right = Sprite_right;
+            Joueur.endroit = place;
+            Joueur.Heal = heal;
         }
     }
 }

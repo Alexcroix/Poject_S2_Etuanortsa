@@ -12,11 +12,10 @@ public class Dog : MonoBehaviourPunCallbacks
 {
     private EnemyType CurrentEnemyType = EnemyType.DOG;
     private string EnemyTag = "Dog";
-    private static int MaxHealth = 25;
-    private int currentHealth = MaxHealth;
-    private int EnemyDamage = 35;
-    private int EnemySpeed = 12;
-    private int EnemyGains = 5;
+    [SerializeField]
+    private int currentHealth = 15;
+    private int EnemyDamage = 25;
+    
 
 
     public void ReceiveDamage(int damage)
@@ -24,6 +23,7 @@ public class Dog : MonoBehaviourPunCallbacks
         currentHealth = this.currentHealth - damage;
         if(currentHealth <= 0)
         {
+            this.photonView.RPC("BuyWeapon", RpcTarget.All, -25);
             PhotonNetwork.Destroy(gameObject);
         }
     }
@@ -35,5 +35,11 @@ public class Dog : MonoBehaviourPunCallbacks
             j.GetDamage(EnemyDamage);
         }
         
+    }
+
+    [PunRPC]
+    public void BuyWeapon(int itemCost)
+    {
+        Game.Money -= itemCost;
     }
 }

@@ -8,10 +8,14 @@ public class Weapon_shoot : MonoBehaviourPunCallbacks
     public GameObject bulletPrefab;
     PhotonView View;
     public float FireRate;
-    bool CanShoot = true;
+    public static bool CanShoot = true;
     [SerializeField] int SoundOfThisWeapon;
-    
-    
+
+
+    private void Start()
+    {
+        CanShoot = true;
+    }
     void Update()
     {
         View = GetComponent<PhotonView>();

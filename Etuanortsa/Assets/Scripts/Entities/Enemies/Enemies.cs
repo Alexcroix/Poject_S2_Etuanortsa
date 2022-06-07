@@ -75,8 +75,6 @@ public class Enemies : MonoBehaviour
         {
             AllEnemies.Add(enemy);
         }
-        Console.WriteLine("ta mere");
-        Console.WriteLine("" + AllEnemies.Count);
     }
 
     public static bool SpawnAbility(int range, int wave)

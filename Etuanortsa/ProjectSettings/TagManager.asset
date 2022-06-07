@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GameMusic
   - spawn_enemy
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
 {
     public float speed = 50f;
     public Rigidbody2D rb;
-    public int damage = 10;
+    public int damage;
     // Start is called before the first frame update
     [SerializeField] AudioClip[] Jukebox;
 
@@ -22,6 +22,7 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
         if (hitInfo.gameObject.TryGetComponent<Dog>(out Dog d))
         {
             this.photonView.RPC("WeaponCollideAudio", RpcTarget.All, 1, this.transform.position);
+            
             d.ReceiveDamage(damage);
         }
         else if (hitInfo.gameObject.TryGetComponent<Standard>(out Standard s))
@@ -37,7 +38,7 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
         {
             bl.ReceiveDamage(damage);
         }
-        else
+        else if (hitInfo.tag != "spawn_enemy")
         {
             this.photonView.RPC("WeaponCollideAudio", RpcTarget.All, 0,this.transform.position);
         }
@@ -45,6 +46,7 @@ public class Bullet_shoot : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
+
         
     }
 

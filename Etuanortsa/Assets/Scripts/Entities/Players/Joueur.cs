@@ -23,6 +23,7 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Sprite[] HealthBar;
     public Text MoneyCounterText;
     public Text WaveCounterText;
+
     //movement
     Vector2 movement;
     Vector2 mousePos;
@@ -42,9 +43,28 @@ public class Joueur : MonoBehaviourPunCallbacks
     public Animator animator;
 
     //Weapon
+    public List<GameObject> armes;
+    public static int endroit = 0;
+
     public Rigidbody2D weapon;
     public Sprite Left_weapon;
     public Sprite Right_weapon;
+  
+
+    public static Rigidbody2D SelectedWeapon;
+    public static Sprite left;
+    public static Sprite right;
+    public static bool Heal;
+
+
+    [SerializeField]
+    public Rigidbody2D stock_SelectedWeapon;
+    public Sprite stock_left;
+    public Sprite stock_right;
+
+
+
+    public static int ItemCost;
 
     public static float SoundEffect = 0.5f;
     public static float SoundMusic = 0.5f;
@@ -75,15 +95,23 @@ public class Joueur : MonoBehaviourPunCallbacks
             MachineGunShop.SetActive(false);
             Reviveshop.SetActive(false);
             playerUI.SetActive(true);
+
+            foreach (GameObject ob in armes)
+            {
+                ob.SetActive(false);
+            }
+            armes[1].SetActive(true);
+
         }
     }
 
+    
     private void Update()
     {
         MoneyCounterText.text = "" + Game.Money;
         if (View.IsMine)
         {
-            if (Game.IsWaiting)
+            if (!Game.TimeToWait)
             {
                 WaveCounterText.text = "Wave : " + Game.WaveCounter;
             }
@@ -123,7 +151,7 @@ public class Joueur : MonoBehaviourPunCallbacks
             }
             */
 
-            if (Input.GetKeyDown(KeyCode.E)) //a jouter Game.TimeToWait
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (!pauseMenu.activeSelf)
                 {
@@ -132,8 +160,14 @@ public class Joueur : MonoBehaviourPunCallbacks
                     MachineGunShop.SetActive(false);
                     Reviveshop.SetActive(false);
 
-                    //Item = DefaultShop;
                     ItemCost = 1000;
+                    Weapon_shoot.CanShoot = true;
+                    SelectedWeapon = stock_SelectedWeapon ;
+                    left = stock_left;
+                    right = stock_right;
+                    endroit = 1;
+                    Heal = false;
+
 
                     if (shopMenu.activeSelf)
                     {
@@ -162,6 +196,7 @@ public class Joueur : MonoBehaviourPunCallbacks
     {
         if (View.IsMine)
         {
+
             //VectorMovement
             player.MovePosition(player.position + movement * MovementSpeed * Time.deltaTime);
             weapon.MovePosition(player.position + movement * MovementSpeed * Time.deltaTime);
@@ -245,18 +280,53 @@ public class Joueur : MonoBehaviourPunCallbacks
 
     }
 
-    public static int ItemCost;
+    
     //public static Sprite Item;
 
     public void Buy()
     {
         if (Game.Money >= ItemCost)
         {
-            this.photonView.RPC("BuyWeapon", RpcTarget.All, ItemCost);
-            /*
-            Left_Weapon = sprite;
-            Right_Weapon = sprite;
-            */
+            
+            if ((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] !=100 && Heal)
+            {
+                
+                this.photonView.RPC("BuyWeapon", RpcTarget.All, ItemCost);
+            }
+            else if (weapon != SelectedWeapon)
+            {
+                this.photonView.RPC("BuyWeapon", RpcTarget.All, ItemCost);
+            }
+
+            if (Heal)
+            {
+                
+                GetDamage((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] - 100);
+                Heal = true;
+                
+            }
+            else
+            {
+                Left_weapon = left;
+                Right_weapon = right;
+                armes[1].SetActive(false);
+                armes[0].SetActive(false);
+
+                int i = endroit;
+                
+                foreach (GameObject ob in armes)
+                {
+                    ob.SetActive(false);
+                }
+                armes[i].SetActive(true);
+                Weapon_shoot.CanShoot = true;
+                weapon = SelectedWeapon;
+                Heal = false;
+                
+
+            }
+            
+
         }
     }
 
