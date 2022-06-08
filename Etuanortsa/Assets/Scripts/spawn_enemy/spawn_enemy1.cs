@@ -72,6 +72,7 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
 
             PhotonNetwork.InstantiateRoomObject(Mob.name, pointspawn, Quaternion.identity);
             yield return new WaitForSeconds(1f);
+            
 
             
         }

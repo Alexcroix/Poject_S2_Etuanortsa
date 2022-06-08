@@ -14,20 +14,23 @@ public class Blob : MonoBehaviourPunCallbacks
     private string EnemyTag = "Blob";
     private int MaxHealth = 70;
     public int currentHealth = 70;
-    private int EnemyDamage = 25;
-    private int EnemySpeed = 7;
-    private int EnemyGains = 2;
+    private int EnemyDamage = 10;
 
 
-    public void UpdateHealth(int newHealthValue)
-    {
-        this.currentHealth = newHealthValue;
-    }
+   
+    //public void UpdateHealth(int newHealthValue)
+    //{
+    //    this.currentHealth = newHealthValue;
+    //}
 
     public void ReceiveDamage(int damage)
     {
-        int updatedHealth = this.currentHealth - damage;
-        UpdateHealth(updatedHealth > 0 ? updatedHealth : 0);
+        currentHealth = this.currentHealth - damage;
+        if (currentHealth <= 0)
+        {
+            this.photonView.RPC("BuyWeapon", RpcTarget.All, -25);
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
     
 
@@ -39,5 +42,10 @@ public class Blob : MonoBehaviourPunCallbacks
             j.GetDamage(EnemyDamage);
         }
 
+    }
+    [PunRPC]
+    public void BuyWeapon(int itemCost)
+    {
+        Game.Money -= itemCost;
     }
 }
