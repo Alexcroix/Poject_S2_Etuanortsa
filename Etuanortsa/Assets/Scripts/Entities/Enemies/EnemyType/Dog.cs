@@ -15,15 +15,14 @@ public class Dog : MonoBehaviourPunCallbacks
     [SerializeField]
     private int currentHealth = 15;
     private int EnemyDamage = 25;
-    
-
+    private int Gain = 25;
 
     public void ReceiveDamage(int damage)
     {
         currentHealth = this.currentHealth - damage;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Game.MobDrop(25);
+            this.photonView.RPC("Gains", RpcTarget.All);
             PhotonNetwork.Destroy(gameObject);
         }
     }
@@ -35,5 +34,11 @@ public class Dog : MonoBehaviourPunCallbacks
             j.GetDamage(EnemyDamage);
         }
         
+    }
+
+    [PunRPC]
+    public void Gains()
+    {
+        Game.Money += Gain;
     }
 }

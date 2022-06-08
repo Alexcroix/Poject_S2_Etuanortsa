@@ -15,9 +15,8 @@ public class Blob : MonoBehaviourPunCallbacks
     private int MaxHealth = 70;
     public int currentHealth = 70;
     private int EnemyDamage = 10;
+    private int Gain = 25;
 
-
-   
     //public void UpdateHealth(int newHealthValue)
     //{
     //    this.currentHealth = newHealthValue;
@@ -28,7 +27,7 @@ public class Blob : MonoBehaviourPunCallbacks
         currentHealth = this.currentHealth - damage;
         if (currentHealth <= 0)
         {
-            this.photonView.RPC("BuyWeapon", RpcTarget.All, -25);
+            this.photonView.RPC("Gains", RpcTarget.All);
             PhotonNetwork.Destroy(gameObject);
         }
     }
@@ -43,9 +42,10 @@ public class Blob : MonoBehaviourPunCallbacks
         }
 
     }
+
     [PunRPC]
-    public void BuyWeapon(int itemCost)
+    public void Gains()
     {
-        Game.Money -= itemCost;
+        Game.Money += Gain;
     }
 }

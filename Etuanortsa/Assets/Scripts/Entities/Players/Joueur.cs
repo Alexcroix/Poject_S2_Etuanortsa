@@ -281,20 +281,23 @@ public class Joueur : MonoBehaviourPunCallbacks
             
             if ((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] !=100 && Heal)
             {
-                
+                print("tu es un");
                 this.photonView.RPC("BuyWeapon", RpcTarget.All, ItemCost);
             }
             else if (weapon != SelectedWeapon)
             {
+                print("tu es un");
                 this.photonView.RPC("BuyWeapon", RpcTarget.All, ItemCost);
+            }
+            else
+            {
+                return;
             }
 
             if (Heal)
             {
-                
                 GetDamage((int)PhotonNetwork.LocalPlayer.CustomProperties["health"] - 100);
                 Heal = true;
-                
             }
             else
             {
@@ -313,14 +316,11 @@ public class Joueur : MonoBehaviourPunCallbacks
                 Weapon_shoot.CanShoot = true;
                 weapon = SelectedWeapon;
                 Heal = false;
-                
-
             }
             
 
         }
     }
-
 
     public void OnClickSoundButton()
     {
@@ -328,11 +328,11 @@ public class Joueur : MonoBehaviourPunCallbacks
         SoundMenu.SetActive(true);
     }
 
-    
 
     [PunRPC]
-    public static void BuyWeapon(int itemCost)
+    public void BuyWeapon(int itemCost)
     {
+        print("enculer");
         Game.Money -= itemCost;
     }
 
