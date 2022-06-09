@@ -108,7 +108,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1.44
-  endReachedDistance: 1.4
+  endReachedDistance: 1.3
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -142,9 +142,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.006235123, y: -0.2894273}
+  m_Offset: {x: -0.016698837, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8256469
+  m_Radius: 1.2320309
 --- !u!50 &6408398251522311077
 Rigidbody2D:
   serializedVersion: 4

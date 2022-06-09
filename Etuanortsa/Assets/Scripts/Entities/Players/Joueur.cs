@@ -100,7 +100,7 @@ public class Joueur : MonoBehaviourPunCallbacks
             {
                 ob.SetActive(false);
             }
-            armes[1].SetActive(true);
+            armes[3].SetActive(true);
 
         }
     }
