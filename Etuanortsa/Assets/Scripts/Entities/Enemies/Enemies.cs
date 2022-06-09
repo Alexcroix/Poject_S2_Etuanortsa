@@ -22,16 +22,6 @@ public class Enemies : MonoBehaviour
     {
         AllEnemies = new List<EnemyType>();
 
-        int x = StandardSpawn(wave);
-
-        for (int i = 0; i < x; i++)
-        {
-            AllEnemies.Add(EnemyType.DOG);
-        }
-
-        Shuffle(AllEnemies);
-        
-        /*
         if (wave == BossStage)
         {
             AllEnemies.Add(EnemyType.DOG);
@@ -42,7 +32,14 @@ public class Enemies : MonoBehaviour
 
             for (int i = 0; i < x; i++)
             {
-                AllEnemies.Add(EnemyType.DOG);
+                AllEnemies.Add(EnemyType.STANDARD);
+            }
+
+            x = BlobSpawn(wave);
+
+            for (int i = 0; i < x; i++)
+            {
+                AllEnemies.Add(EnemyType.BLOB);
             }
 
             x = DogSpawn(wave);
@@ -52,16 +49,9 @@ public class Enemies : MonoBehaviour
                 AllEnemies.Add(EnemyType.DOG);
             }
 
-            x = BlobSpawn(wave);
-
-            for (int i = 0; i < x; i++)
-            {
-                AllEnemies.Add(EnemyType.DOG);
-            }
         }
 
         Shuffle(AllEnemies);
-        */
     }
 
     public static void Shuffle(List<EnemyType> enemies)

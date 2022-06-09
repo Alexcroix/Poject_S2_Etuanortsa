@@ -12,24 +12,27 @@ public class Standard : MonoBehaviourPunCallbacks
 {
     private EnemyType CurrentEnemyType = EnemyType.STANDARD;
     private string EnemyTag = "Standard";
-    private int MaxHealth = 45;
-    public int currentHealth = 45;
+    [SerializeField]
+    public int currentHealth = 20;
     private int EnemyDamage = 15;
-    private int EnemySpeed = 5;
-    private int EnemyGains = 1;
+    private int Gain = 25;
 
-
-    public void UpdateHealth(int newHealthValue)
-    {
-        this.currentHealth = newHealthValue;
-    }
+    //public void UpdateHealth(int newHealthValue)
+    //{
+    //    this.currentHealth = newHealthValue;
+    //}
 
     public void ReceiveDamage(int damage)
     {
-        int updatedHealth = this.currentHealth - damage;
-        UpdateHealth(updatedHealth > 0 ? updatedHealth : 0);
+        currentHealth = this.currentHealth - damage;
+        if (currentHealth <= 0)
+        {
+            this.photonView.RPC("Gains", RpcTarget.All);
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
-    
+
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -38,5 +41,11 @@ public class Standard : MonoBehaviourPunCallbacks
             j.GetDamage(EnemyDamage);
         }
 
+    }
+
+    [PunRPC]
+    public void Gains()
+    {
+        Game.Money += Gain;
     }
 }

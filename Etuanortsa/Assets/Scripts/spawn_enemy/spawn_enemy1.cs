@@ -59,15 +59,15 @@ public class spawn_enemy1 : MonoBehaviourPunCallbacks
                     case EnemyType.STANDARD:
                         Mob = gameObjects[0];
                         break;
-                    case EnemyType.DOG:
+                    case EnemyType.BLOB:
                         Mob = gameObjects[1];
                         break;
-                    case EnemyType.BLOB:
+                    case EnemyType.DOG:
                         Mob = gameObjects[2];
                         break;
                     case EnemyType.BOSS:
-                        Mob = gameObjects[3];
-                        break;
+                            Mob = gameObjects[3];
+                            break;
             }
 
             PhotonNetwork.InstantiateRoomObject(Mob.name, pointspawn, Quaternion.identity);

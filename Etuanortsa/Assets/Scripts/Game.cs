@@ -26,7 +26,7 @@ public class Game : MonoBehaviourPunCallbacks
     private void Start()
     {
         Music = GetComponent<AudioSource>();
-        Money = 10000;
+        Money = 0;
         GameObject[] OldMusic = GameObject.FindGameObjectsWithTag("GameMusic");
         foreach (var m in OldMusic)
         {

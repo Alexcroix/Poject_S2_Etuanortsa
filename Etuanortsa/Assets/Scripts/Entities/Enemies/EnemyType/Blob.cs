@@ -12,10 +12,9 @@ public class Blob : MonoBehaviourPunCallbacks
 {
     private EnemyType CurrentEnemyType = EnemyType.BLOB;
     private string EnemyTag = "Blob";
-    private int MaxHealth = 70;
-    public int currentHealth = 70;
+    public int currentHealth = 80;
     private int EnemyDamage = 10;
-    private int Gain = 25;
+    private int Gain = 80;
 
     //public void UpdateHealth(int newHealthValue)
     //{

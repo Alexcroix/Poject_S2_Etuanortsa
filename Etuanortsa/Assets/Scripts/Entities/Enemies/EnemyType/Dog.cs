@@ -14,7 +14,7 @@ public class Dog : MonoBehaviourPunCallbacks
     private string EnemyTag = "Dog";
     [SerializeField]
     private int currentHealth = 15;
-    private int EnemyDamage = 25;
+    private int EnemyDamage = 20;
     private int Gain = 25;
 
     public void ReceiveDamage(int damage)

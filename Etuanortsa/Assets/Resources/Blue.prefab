@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9021052603799193624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   - {fileID: 281392518485255337}
   - {fileID: 4765705912474728515}
   - {fileID: 3989636368184803546}
-  Cost: 10000
+  Cost: 3000
   weapon: {fileID: 0}
   Sprite_right: {fileID: 0}
   Sprite_left: {fileID: 0}
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_text: '1000 $
 
 
-    Attack Speed: 0.2
+    Attack Speed: 0.5
 
 
     Damage: 5'
@@ -2800,7 +2800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8311048570118871588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3434,7 +3434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &631394472740728948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4705,10 +4705,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '10000 $
+  m_text: '3000 $
 
 
-    Use close to your shitty teammate to revive him'
+    Use to heal yourself'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -5044,7 +5044,7 @@ MonoBehaviour:
   m_text: '2000 $
 
 
-    Attack Speed: 0.2
+    Attack Speed: 0.5
 
 
     Damage: 10'

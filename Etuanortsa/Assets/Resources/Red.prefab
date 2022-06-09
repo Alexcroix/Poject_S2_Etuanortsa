@@ -226,7 +226,7 @@ MonoBehaviour:
   - {fileID: 130271655020852816}
   - {fileID: 3620060028812653999}
   - {fileID: 7789368772256316477}
-  Cost: 10000
+  Cost: 3000
   weapon: {fileID: 0}
   Sprite_right: {fileID: 0}
   Sprite_left: {fileID: 0}
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_text: '2000 $
 
 
-    Attack Speed: 0.2
+    Attack Speed: 0.5
 
 
     Damage: 10'
@@ -2399,7 +2399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '10000 $
+  m_text: '3000 $
 
 
     Use close to your shitty teammate to revive him'
@@ -3514,7 +3514,7 @@ MonoBehaviour:
   m_text: '5000 $
 
 
-    Attack Speed: 0.2
+    Attack Speed: 0.5
 
 
     Damage: 15'
@@ -4491,7 +4491,7 @@ MonoBehaviour:
   m_text: '1000 $
 
 
-    Attack Speed: 0.2
+    Attack Speed: 0.5
 
 
     Damage: 5'
