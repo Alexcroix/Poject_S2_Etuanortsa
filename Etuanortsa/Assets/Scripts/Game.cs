@@ -11,7 +11,7 @@ public class Game : MonoBehaviourPunCallbacks
 {
     public static List<EnemyType> AllEnemies = new List<EnemyType>();
     
-    public static int WaveCounter = 0;
+    public static int WaveCounter = 9;
     public static bool IsAWave = false;
     public static bool IsWaiting = false;
     private float timer = 0.0f;
@@ -26,7 +26,7 @@ public class Game : MonoBehaviourPunCallbacks
     private void Start()
     {
         Music = GetComponent<AudioSource>();
-        Money = 0;
+        Money = 10000;
         GameObject[] OldMusic = GameObject.FindGameObjectsWithTag("GameMusic");
         foreach (var m in OldMusic)
         {
